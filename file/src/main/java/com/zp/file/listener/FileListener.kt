@@ -4,12 +4,17 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.zp.file.R
+import com.zp.file.content.AUDIO_DIALOG_TAG
+import com.zp.file.content.checkFragmentByTag
 import com.zp.file.content.log
 import com.zp.file.type.*
+import com.zp.file.ui.AudioPlayDialog
 import com.zp.file.ui.PicActivity
 import java.io.File
 
@@ -61,7 +66,11 @@ abstract class JumpByTypeListener : BaseJumpByTypeListener {
 class IJumpListener : JumpByTypeListener() {
 
     override fun jumpAudio(filePath: String, view: View, context: Context) {
-        log("jumpAudio")
+        val activity = context as AppCompatActivity
+        activity.checkFragmentByTag(AUDIO_DIALOG_TAG)
+        AudioPlayDialog.getInstance(filePath).apply {
+            show(activity.supportFragmentManager, AUDIO_DIALOG_TAG)
+        }
     }
 
     override fun jumpImage(filePath: String, view: View, context: Context) {
@@ -75,12 +84,11 @@ class IJumpListener : JumpByTypeListener() {
     }
 
     override fun jumpTxt(filePath: String, view: View, context: Context) {
-        /*context.startActivity(Intent("android.intent.action.VIEW").apply {
+        context.startActivity(Intent(Intent.ACTION_VIEW).apply {
             addCategory("android.intent.category.DEFAULT")
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             setDataAndType(Uri.fromFile(File(filePath)), "text/plain")
-        })*/
-        log("jumpTxt")
+        })
     }
 
     override fun jumpZip(filePath: String, view: View, context: Context) {

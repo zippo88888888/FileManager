@@ -32,7 +32,8 @@ const val TXT = "txt"
 
 const val ZIP = "zip"
 
-const val SORT_DIALOG_TAG = "sortDial"
+const val SORT_DIALOG_TAG = "sortDialog"
+const val AUDIO_DIALOG_TAG = "audioDialog"
 
 /** SD卡的根目录  */
 val SD_ROOT by lazy {

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_divider_padding">
+
+        <ImageView
+            android:id="@+id/dialog_audio_play"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/file_audio_play" />
+
+        <ImageView
+            android:id="@+id/dialog_audio_pause"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/file_aduio_pause"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/dialog_audio_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingLeft="45dp"
+            android:paddingStart="45dp"
+            tools:text="我是音频文件.mp3" />
+
+    </FrameLayout>
+
+    <android.support.v7.widget.AppCompatSeekBar
+        android:id="@+id/dialog_audio_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/default_divider_padding"
+        android:paddingRight="@dimen/default_divider_padding"
+        android:max="100" />
+
+    <RelativeLayout
+        android:padding="@dimen/default_divider_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Chronometer
+            android:id="@+id/dialog_audio_nowTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/dialog_audio_countTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_alignParentEnd="true"
+            tools:text="03:00"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

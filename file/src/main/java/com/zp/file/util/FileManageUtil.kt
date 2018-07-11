@@ -66,4 +66,30 @@ class FileManageUtil {
         }
         return ">1TB"
     }
+
+    /** int类型转时分秒格式 */
+    fun secToTime(time: Int): String {
+        val timeStr: String?
+        val hour: Int
+        var minute: Int
+        val second: Int
+        if (time <= 0) return "00:00"
+        else {
+            minute = time / 60
+            if (minute < 60) {
+                second = time % 60
+                timeStr = unitFormat(minute) + ":" + unitFormat(second)
+            } else {
+                hour = minute / 60
+                if (hour > 99) return "99:59:59"
+                minute %= 60
+                second = time - hour * 3600 - minute * 60
+                timeStr = unitFormat(hour) + ":" + unitFormat(minute) + ":" + unitFormat(second)
+            }
+        }
+        return timeStr
+    }
+
+    private fun unitFormat(i: Int) = if (i in 0..9) "0" + Integer.toString(i) else "" + i
+
 }

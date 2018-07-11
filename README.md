@@ -8,7 +8,7 @@
 
 使用：<br>
 1) 在Application中 <br>
-FileManageHelp.getInstance()
+FileManageHelp.getInstance()<br>
                 .setImgeLoad(IFileImageListener())<br>
                 .setJumpListener(IJumpListener()) <br>
                 .setMaxLength(9, "最大选取数量：9") <br>

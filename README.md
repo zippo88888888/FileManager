@@ -21,5 +21,8 @@ FileManageHelp.getInstance()<br>
 2) 在Activity或Fragment中<br><br>
 FileManageHelp.getInstance().start(this) // 默认SD卡根目录<br>
 FileManageHelp.getInstance().start(this,"指定目录")<br>
-实现 FileResultListener 接口 重写 resultSuccess(list:ArrayList\<FileBean\>?)方法 <br>
+实现 FileResultListener 接口 重写 resultSuccess(list:ArrayList\<FileBean\>?)方法 <br><br>
+3）样式自定义<br>
+查看 file 工程里面的 drawable,values里面的值，并在主工程目录下的相同位置 保存命名一致即可替换 颜色，图片，选中样式
+
  

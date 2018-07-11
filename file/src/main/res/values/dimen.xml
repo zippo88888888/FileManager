@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- RecyclerView或其他控件默认边距 -->
+    <dimen name="default_divider_padding">10dp</dimen>
+    <!-- RecyclerView自定义分隔线高度 -->
+    <dimen name="diy_divider_height">15dp</dimen>
+
+</resources>

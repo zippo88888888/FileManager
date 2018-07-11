@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_file_down"
+        android:title="完成"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_file_px"
+        android:title="排序方式"
+        app:showAsAction="never" />
+
+    <group
+        android:checkableBehavior="single"
+        app:showAsAction="never">
+
+        <item
+            android:id="@+id/menu_file_hidden"
+            android:checked="true"
+            android:title="不显示隐藏文件" />
+
+        <item
+            android:id="@+id/menu_file_show"
+            android:title="显示隐藏文件" />
+
+    </group>
+
+</menu>

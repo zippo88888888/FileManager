@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="file_manager_tool_bar_color">@color/violet</color>
+    <color name="violet">#912699</color>
+    <color name="black">#000000</color>
+    <color name="gray">#666666</color>
+    <color name="white">#ffffff</color>
+    <color name="green">#2c832e</color>
+    <color name="red">#e01d07</color>
+
+    <color name="bgclor">#f5f8fa</color>
+</resources>

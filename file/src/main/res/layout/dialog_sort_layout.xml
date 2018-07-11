@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="15dp"
+        android:text="排序方式"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/sortGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <RadioButton
+            android:id="@+id/sort_by_default"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="  默认（无顺序）" />
+
+        <RadioButton
+            android:id="@+id/sort_by_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  名称" />
+
+        <RadioButton
+            android:id="@+id/sort_by_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  时间" />
+
+        <RadioButton
+            android:id="@+id/sort_by_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  大小" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/sequenceLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_divider_padding"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="@dimen/default_divider_padding"
+            android:text="顺序"
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
+
+        <RadioGroup
+            android:id="@+id/sequenceGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <RadioButton
+                android:id="@+id/sequence_asc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="  升序" />
+
+            <RadioButton
+                android:id="@+id/sequence_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  降序" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/dialog_sort_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackground"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/default_divider_padding"
+            android:paddingRight="@dimen/default_divider_padding"
+            android:paddingTop="5dp"
+            android:text="确定"
+            android:textColor="@color/file_manager_tool_bar_color" />
+
+        <TextView
+            android:id="@+id/dialog_sort_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_toStartOf="@+id/dialog_sort_down"
+            android:background="?selectableItemBackground"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/default_divider_padding"
+            android:paddingRight="@dimen/default_divider_padding"
+            android:paddingTop="5dp"
+            android:text="取消"
+            android:textColor="@color/file_manager_tool_bar_color" />
+
+    </RelativeLayout>
+
+</LinearLayout>

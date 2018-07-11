@@ -5,12 +5,6 @@ import android.view.View
 import com.zp.file.content.toast
 import com.zp.file.listener.JumpByTypeListener
 
-/**
- * com.zp.filemanage
- * Created by ZP on 2018/7/9.
- * description:
- * version: 1.0
- */
 class MyJumpListener : JumpByTypeListener() {
 
     override fun jumpAudio(filePath: String, view: View, context: Context) {

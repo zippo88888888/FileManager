@@ -6,12 +6,6 @@ import com.zp.file.content.*
 import com.zp.file.listener.IFileImageListener
 import com.zp.file.listener.IJumpListener
 
-/**
- * com.zp.filemanage
- * Created by ZP on 2018/7/6.
- * description:
- * version: 1.0
- */
 class App : Application() {
 
     override fun onCreate() {

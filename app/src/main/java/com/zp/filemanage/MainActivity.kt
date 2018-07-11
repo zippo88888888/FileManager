@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), FileResultListener {
 //            FileManageHelp.getInstance().jumpToFileUI(this, "$SD_ROOT/Pictures")
             FileManageHelp.getInstance().start(this)
         }
+
     }
 
     override fun resultSuccess(list: ArrayList<FileBean>?) {

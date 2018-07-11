@@ -7,7 +7,7 @@
 支持样式，跳转自定义<br><br>
 
 使用：<br>
-1) 在Application中 <br>
+1) 在Application中 <br><br>
 FileManageHelp.getInstance()<br>
                 .setImgeLoad(IFileImageListener()) // 图片加载方式<br>
                 .setJumpListener(IJumpListener()) // 跳转方式 <br>
@@ -17,4 +17,14 @@ FileManageHelp.getInstance()<br>
                 .setFileFilterArray(arrayOf(PNG, JPG, GIF, MP3, AAC, MP4, _3GP, TXT, ZIP)) // 设置过滤规则<br>
                 .setSortordByWhat(FileManageHelp.BY_DEFAULT) // 设置排序方式<br>
                 .setSortord(FileManageHelp.ASC) // 升序或降序<br>
-                .isShowLog = true // 是否显示日志<br>
+                .isShowLog = true // 是否显示日志<br><br>
+2) 在Activity或Fragment中<br><br>
+FileManageHelp.getInstance().start(this) // 默认SD卡根目录<br>
+FileManageHelp.getInstance().start(this,"指定目录")<br>
+实现 FileResultListener 接口 重写 resultSuccess()方法 <br>
+override fun resultSuccess(list: ArrayList<FileBean>?) {<br>
+        main_msg.text = StringBuilder().run {<br>
+            list?.forEach { append("$it\n\n") }<br>
+            toString()<br>
+        }<br>
+}<br>

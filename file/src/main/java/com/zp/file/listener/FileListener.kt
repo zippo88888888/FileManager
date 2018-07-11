@@ -84,11 +84,12 @@ class IJumpListener : JumpByTypeListener() {
     }
 
     override fun jumpTxt(filePath: String, view: View, context: Context) {
-        context.startActivity(Intent(Intent.ACTION_VIEW).apply {
+        log("jumpTxt")
+        /*context.startActivity(Intent(Intent.ACTION_VIEW).apply {
             addCategory("android.intent.category.DEFAULT")
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             setDataAndType(Uri.fromFile(File(filePath)), "text/plain")
-        })
+        })*/
     }
 
     override fun jumpZip(filePath: String, view: View, context: Context) {

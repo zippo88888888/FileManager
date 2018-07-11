@@ -123,5 +123,4 @@ class RecycleViewDivider : RecyclerView.ItemDecoration {
             )
         }
     }
-
 }

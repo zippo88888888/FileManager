@@ -9,13 +9,6 @@ import android.view.View
 import com.zp.file.common.FileManageHelp
 import java.io.File
 
-
-/**
- * com.zp.file.type
- * Created by ZP on 2018/7/4.
- * description:
- * version: 1.0
- */
 class TxtType : FileType {
 
     /**

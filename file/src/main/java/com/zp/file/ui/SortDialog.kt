@@ -11,12 +11,6 @@ import android.widget.RadioGroup
 import com.zp.file.R
 import kotlinx.android.synthetic.main.dialog_sort_layout.*
 
-/**
- * com.zp.file.ui
- * Created by ZP on 2018/7/6.
- * description:
- * version: 1.0
- */
 class SortDialog : DialogFragment(), RadioGroup.OnCheckedChangeListener {
 
     companion object {

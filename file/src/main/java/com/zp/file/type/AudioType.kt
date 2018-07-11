@@ -6,12 +6,6 @@ import android.widget.ImageView
 import com.zp.file.R
 import com.zp.file.common.FileManageHelp
 
-/**
- * com.zp.file.type
- * Created by ZP on 2018/7/4.
- * description:
- * version: 1.0
- */
 class AudioType : FileType {
 
     override fun openFile(filePath: String, view: View, context: Context) {

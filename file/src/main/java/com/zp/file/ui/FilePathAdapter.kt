@@ -49,5 +49,5 @@ class FilePathAdapter (private var context: Context) : RecyclerView.Adapter<File
 
     override fun getItemCount() = list.size
 
-    fun getItem(position: Int) = list[position]
+    private fun getItem(position: Int) = list[position]
 }

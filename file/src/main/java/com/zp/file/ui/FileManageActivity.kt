@@ -282,5 +282,4 @@ class FileManageActivity : FileActivity() {
             else toast("权限申请失败")
         }
     }
-
 }

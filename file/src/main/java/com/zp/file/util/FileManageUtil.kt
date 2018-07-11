@@ -8,12 +8,6 @@ import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-/**
- * com.zp.file.util
- * Created by ZP on 2018/7/4.
- * description: 2018-7-6 包括防晒霜，共在京东消费 29023.5RMB
- * version: 1.0
- */
 class FileManageUtil {
 
     private object Builder {

@@ -4,12 +4,6 @@ import android.content.Context
 import android.view.View
 import com.zp.file.type.FileType
 
-/**
- * com.zp.file.common
- * Created by ZP on 2018/7/4.
- * description:
- * version: 1.0
- */
 interface FileManage {
 
     /**

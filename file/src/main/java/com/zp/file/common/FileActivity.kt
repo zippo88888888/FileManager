@@ -17,5 +17,4 @@ abstract class FileActivity : AppCompatActivity() {
     abstract fun getContentView(): Int
     abstract fun getFileManage(): FileManage?
     abstract fun init(savedInstanceState: Bundle?)
-
 }

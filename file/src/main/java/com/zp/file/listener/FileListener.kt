@@ -90,7 +90,6 @@ class IJumpListener : JumpByTypeListener() {
     override fun jumpOther(filePath: String, view: View, context: Context) {
         log("jumpOther")
     }
-
 }
 
 

@@ -3,7 +3,6 @@ package com.zp.file.util
 import android.support.v7.widget.RecyclerView
 import com.zp.file.R
 
-
 object RefreshUtil {
 
     /**

@@ -2,7 +2,6 @@ package com.zp.file.content
 
 import java.io.Serializable
 
-
 data class FileBean(
         var fileName: String,
         var isFile: Boolean, // true---文件；false---文件夹

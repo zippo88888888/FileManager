@@ -17,4 +17,5 @@ class PicActivity : AppCompatActivity() {
         FileManageHelp.getInstance().getImageLoad()?.loadImage(pic_show, filePath)
         pic_show.setOnClickListener { onBackPressed() }
     }
+
 }

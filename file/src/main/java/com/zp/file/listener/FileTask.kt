@@ -8,12 +8,6 @@ import java.io.File
 import java.lang.ref.WeakReference
 import java.util.ArrayList
 
-/**
- * com.zp.file.listener
- * Created by ZP on 2018/7/6.
- * description:
- * version: 1.0
- */
 class FileTask(util: FileManageUtil, private var listener: (ArrayList<FileBean>) -> Unit)
     : AsyncTask<String, Unit, ArrayList<FileBean>>() {
 

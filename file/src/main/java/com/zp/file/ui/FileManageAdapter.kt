@@ -188,8 +188,7 @@ class FileManageAdapter(private var context: Context) : RecyclerView.Adapter<Fil
         return FileViewHolder(view)
     }
 
-    fun getItem(position: Int) = data[position]
+    private fun getItem(position: Int) = data[position]
 
     override fun getItemCount() = data.size
-
 }

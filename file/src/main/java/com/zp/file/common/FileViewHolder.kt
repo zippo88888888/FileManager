@@ -43,5 +43,4 @@ class FileViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun setOnItemLongClickListener(listener: View.OnLongClickListener) {
         itemView.setOnLongClickListener(listener)
     }
-
 }

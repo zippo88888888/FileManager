@@ -123,4 +123,3 @@ fun log(msg: String) {
         Log.e("file_manager", msg)
 }
 
-

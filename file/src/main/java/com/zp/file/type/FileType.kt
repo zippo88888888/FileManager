@@ -13,5 +13,4 @@ interface FileType {
     fun infoFile(filePath: String) {
 
     }
-
 }

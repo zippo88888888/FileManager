@@ -58,5 +58,4 @@ class CommonDialog(context: Context, private var isUserDefaultTitle: Boolean = t
             show()
         }
     }
-
 }

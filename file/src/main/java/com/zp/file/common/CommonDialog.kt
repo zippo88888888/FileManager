@@ -6,7 +6,7 @@ import java.lang.ref.SoftReference
 
 class CommonDialog(context: Context, private var isUserDefaultTitle: Boolean = true) {
 
-    private var reference: SoftReference<Context> = SoftReference(context)
+    private val reference: SoftReference<Context> by lazy { SoftReference(context) }
 
     private fun createDialog(listener1: () -> Unit, str: Array<out String>): AlertDialog.Builder? {
         if (reference.get() != null) {

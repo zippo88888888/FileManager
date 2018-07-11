@@ -21,10 +21,5 @@ FileManageHelp.getInstance()<br>
 2) 在Activity或Fragment中<br><br>
 FileManageHelp.getInstance().start(this) // 默认SD卡根目录<br>
 FileManageHelp.getInstance().start(this,"指定目录")<br>
-实现 FileResultListener 接口 重写 resultSuccess()方法 <br>
-override fun resultSuccess(list: ArrayList<FileBean>?) {<br>
-        main_msg.text = StringBuilder().run {<br>
-            list?.forEach { append("$it\n\n") }<br>
-            toString()<br>
-        }<br>
-}<br>
+实现 FileResultListener 接口 重写 resultSuccess(list:ArrayList\<FileBean\>?)方法 <br>
+ 

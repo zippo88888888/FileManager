@@ -9,7 +9,7 @@
 使用：<br>
 1) 在Application中 <br>
 FileManageHelp.getInstance()
-                .setImgeLoad(IFileImageListener())
+                .setImgeLoad(IFileImageListener())<br>
                 .setJumpListener(IJumpListener()) 
                 .setMaxLength(9, "最大选取数量：9") 
                 .setCanRightTouch(true) 

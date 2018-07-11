@@ -9,12 +9,12 @@
 使用：<br>
 1) 在Application中 <br>
 FileManageHelp.getInstance()<br>
-                .setImgeLoad(IFileImageListener())<br>
-                .setJumpListener(IJumpListener()) <br>
+                .setImgeLoad(IFileImageListener())// 图片加载方式<br>
+                .setJumpListener(IJumpListener())//跳转方式 <br>
                 .setMaxLength(9, "最大选取数量：9") <br>
-                .setCanRightTouch(true) <br>
-                .setShowHiddenFile(false) <br>
-                .setFileFilterArray(arrayOf(PNG, JPG, GIF, MP3, AAC, MP4, _3GP, TXT, ZIP))<br>
-                .setSortordByWhat(FileManageHelp.BY_DEFAULT)<br>
-                .setSortord(FileManageHelp.ASC)<br>
-                .isShowLog = true<br>
+                .setCanRightTouch(true)// 滑动删除 <br>
+                .setShowHiddenFile(false)// 是否显示隐藏文件 <br>
+                .setFileFilterArray(arrayOf(PNG, JPG, GIF, MP3, AAC, MP4, _3GP, TXT, ZIP))// 设置过滤规则<br>
+                .setSortordByWhat(FileManageHelp.BY_DEFAULT)//设置排序方式<br>
+                .setSortord(FileManageHelp.ASC)//升序或降序<br>
+                .isShowLog = true//是否显示日志<br>

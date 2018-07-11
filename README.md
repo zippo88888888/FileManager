@@ -10,11 +10,11 @@
 1) 在Application中 <br>
 FileManageHelp.getInstance()
                 .setImgeLoad(IFileImageListener())<br>
-                .setJumpListener(IJumpListener()) 
-                .setMaxLength(9, "最大选取数量：9") 
-                .setCanRightTouch(true) 
-                .setShowHiddenFile(false) 
-                .setFileFilterArray(arrayOf(PNG, JPG, GIF, MP3, AAC, MP4, _3GP, TXT, ZIP))
-                .setSortordByWhat(FileManageHelp.BY_DEFAULT)
-                .setSortord(FileManageHelp.ASC)
-                .isShowLog = true
+                .setJumpListener(IJumpListener()) <br>
+                .setMaxLength(9, "最大选取数量：9") <br>
+                .setCanRightTouch(true) <br>
+                .setShowHiddenFile(false) <br>
+                .setFileFilterArray(arrayOf(PNG, JPG, GIF, MP3, AAC, MP4, _3GP, TXT, ZIP))<br>
+                .setSortordByWhat(FileManageHelp.BY_DEFAULT)<br>
+                .setSortord(FileManageHelp.ASC)<br>
+                .isShowLog = true<br>

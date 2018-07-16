@@ -19,21 +19,21 @@ interface FileManage {
     /**
      * 复制文件
      */
-    fun copyFile(filePath: String)
+    fun copyFile(filePath: String, context: Context)
 
     /**
      * 剪切文件
      */
-    fun cutFile(filePath: String)
+    fun cutFile(filePath: String, context: Context)
 
     /**
      * 粘贴文件
      */
-    fun pasteFile(filePath: String)
+    fun pasteFile(filePath: String, context: Context)
 
     /**
      * 查看文件详情
      */
-    fun infoFile(fileType: FileType?, filePath: String)
+    fun infoFile(fileType: FileType?, filePath: String, context: Context)
 
 }

@@ -3,7 +3,7 @@ package com.zp.file.util
 import com.zp.file.content.FileBean
 import com.zp.file.content.SD_ROOT
 import com.zp.file.listener.FileTask
-import java.io.File
+import java.io.*
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -91,5 +91,45 @@ class FileManageUtil {
     }
 
     private fun unitFormat(i: Int) = if (i in 0..9) "0" + Integer.toString(i) else "" + i
+
+    /**
+     * 复制文件
+     * @param sourceFile    原文件
+     * @param targetFile    复制的文件
+     */
+    fun copyFile(sourceFile: File, targetFile: File) : Boolean {
+        var success = false
+        // 新建文件输入流并对它进行缓冲
+        val input = FileInputStream(sourceFile)
+        val inBuff = BufferedInputStream(input)
+        // 新建文件输出流并对它进行缓冲
+        val output = FileOutputStream(targetFile)
+        val outBuff = BufferedOutputStream(output)
+        try {
+            // 缓冲数组
+            val b = ByteArray(1024 * 5)
+            while (true) {
+                val len = inBuff.read(b)
+                if (len == -1) {
+                    break
+                } else {
+                    outBuff.write(b, 0, len)
+                }
+            }
+            // 刷新此缓冲的输出流
+            outBuff.flush()
+            success = true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            success = false
+        } finally {
+            //关闭流
+            inBuff.close()
+            outBuff.close()
+            output.close()
+            input.close()
+            return success
+        }
+    }
 
 }

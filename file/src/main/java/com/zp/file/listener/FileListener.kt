@@ -63,39 +63,14 @@ class IFileImageListener : FileImageListener {
     }
 }
 
+
+
 /**
  * 跳转
  */
-private interface BaseJumpByTypeListener {
-    fun jump(filePath: String, view: View, context: Context)
-}
+open class JumpByTypeListener {
 
-abstract class JumpByTypeListener : BaseJumpByTypeListener {
-    final override fun jump(filePath: String, view: View, context: Context) {
-        when (FileTypeManage.getInstance().getFileType(filePath)) {
-            is AudioType -> jumpAudio(filePath, view, context)
-            is ImageType -> jumpImage(filePath, view, context)
-            is VideoType -> jumpVideo(filePath, view, context)
-            is TxtType -> jumpTxt(filePath, view, context)
-            is ZipType -> jumpZip(filePath, view, context)
-            is OtherType -> jumpOther(filePath, view, context)
-        }
-    }
-    abstract fun jumpAudio(filePath: String, view: View, context: Context)
-    abstract fun jumpImage(filePath: String, view: View, context: Context)
-    abstract fun jumpVideo(filePath: String, view: View, context: Context)
-    abstract fun jumpTxt(filePath: String, view: View, context: Context)
-    abstract fun jumpZip(filePath: String, view: View, context: Context)
-    abstract fun jumpDoc(filePath: String, view: View, context: Context)
-    abstract fun jumpXls(filePath: String, view: View, context: Context)
-    abstract fun jumpPpt(filePath: String, view: View, context: Context)
-    abstract fun jumpPdf(filePath: String, view: View, context: Context)
-    abstract fun jumpOther(filePath: String, view: View, context: Context)
-}
-
-class IJumpListener : JumpByTypeListener() {
-
-    override fun jumpAudio(filePath: String, view: View, context: Context) {
+    open fun jumpAudio(filePath: String, view: View, context: Context) {
         val activity = context as AppCompatActivity
         activity.checkFragmentByTag(AUDIO_DIALOG_TAG)
         AudioPlayDialog.getInstance(filePath).apply {
@@ -103,26 +78,26 @@ class IJumpListener : JumpByTypeListener() {
         }
     }
 
-    override fun jumpImage(filePath: String, view: View, context: Context) {
+    open fun jumpImage(filePath: String, view: View, context: Context) {
         context.startActivity(Intent(context, PicActivity::class.java).apply {
             putExtra("picFilePath", filePath)
         }, ActivityOptions.makeSceneTransitionAnimation(context as Activity, view,
                 context.getStringById(R.string.sharedElement_pic)).toBundle())
     }
 
-    override fun jumpVideo(filePath: String, view: View, context: Context) {
+    open fun jumpVideo(filePath: String, view: View, context: Context) {
         context.startActivity(Intent(context, VideoPlayActivity::class.java).apply {
             putExtra("videoFilePath", filePath)
         }, ActivityOptions.makeSceneTransitionAnimation(context as Activity, view,
                 context.getStringById(R.string.sharedElement_video)).toBundle())
     }
 
-    override fun jumpTxt(filePath: String, view: View, context: Context) {
+    open fun jumpTxt(filePath: String, view: View, context: Context) {
         log("jumpTxt")
         FileOpenUtil.openTXT(filePath, view, context)
     }
 
-    override fun jumpZip(filePath: String, view: View, context: Context) {
+    open fun jumpZip(filePath: String, view: View, context: Context) {
         AlertDialog.Builder(context).apply {
             setTitle("请选择")
             setItems(arrayOf("打开", "解压"), { dialog, which ->
@@ -138,27 +113,40 @@ class IJumpListener : JumpByTypeListener() {
         }
     }
 
-    override fun jumpDoc(filePath: String, view: View, context: Context) {
+    open fun jumpDoc(filePath: String, view: View, context: Context) {
         FileOpenUtil.openDOC(filePath, view, context)
     }
 
-    override fun jumpXls(filePath: String, view: View, context: Context) {
+    open fun jumpXls(filePath: String, view: View, context: Context) {
         FileOpenUtil.openXLS(filePath, view, context)
     }
 
-    override fun jumpPpt(filePath: String, view: View, context: Context) {
+    open fun jumpPpt(filePath: String, view: View, context: Context) {
         FileOpenUtil.openPPT(filePath, view, context)
     }
 
-    override fun jumpPdf(filePath: String, view: View, context: Context) {
+    open fun jumpPdf(filePath: String, view: View, context: Context) {
         FileOpenUtil.openPDF(filePath, view, context)
     }
 
-    override fun jumpOther(filePath: String, view: View, context: Context) {
+    open fun jumpOther(filePath: String, view: View, context: Context) {
         log("jumpOther")
         context.toast("暂不支持预览该文件")
     }
+}
 
+/**
+ * 文件详情
+ */
+interface FileInfoListener {
+    fun fileInfo(filePath: String, context: Context)
+}
+
+class IFileInfoListener : FileInfoListener {
+
+    override fun fileInfo(filePath: String, context: Context) {
+        context.toast("查看详情 待实现")
+    }
 }
 
 

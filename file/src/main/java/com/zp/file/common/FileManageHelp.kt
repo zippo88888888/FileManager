@@ -1,16 +1,16 @@
 package com.zp.file.common
 
 import android.content.Context
-import android.content.Intent
 import android.support.v4.util.ArrayMap
 import android.view.View
 import com.zp.file.content.jumpActivity
+import com.zp.file.content.toast
 import com.zp.file.listener.*
 import com.zp.file.type.FileType
 import com.zp.file.type.FileTypeManage
 import com.zp.file.ui.FileManageActivity
 import org.jetbrains.annotations.NotNull
-import java.io.*
+import java.io.File
 
 
 class FileManageHelp : FileManage {
@@ -52,6 +52,16 @@ class FileManageHelp : FileManage {
     }
 
     /**
+     * 文件详情
+     */
+    private var fileInfoListener: FileInfoListener? = IFileInfoListener()
+    fun getFileInfoListener() = fileInfoListener
+    fun setFileInfoListener(fileInfoListener: FileInfoListener): FileManageHelp {
+        this.fileInfoListener = fileInfoListener
+        return this
+    }
+
+    /**
      * 设置图片的加载方式
      */
     private var imageLoadeListener: FileImageListener? = IFileImageListener()
@@ -64,7 +74,7 @@ class FileManageHelp : FileManage {
     /**
      * 设置跳转方式
      */
-    private var jumpListener: JumpByTypeListener? = IJumpListener()
+    private var jumpListener: JumpByTypeListener? = JumpByTypeListener()
     fun getJumpListener() = jumpListener
     fun setJumpListener(jumpListener: JumpByTypeListener): FileManageHelp {
         this.jumpListener = jumpListener
@@ -167,65 +177,29 @@ class FileManageHelp : FileManage {
     /**
      * 复制文件
      */
-    override fun copyFile(filePath: String) {
+    override fun copyFile(filePath: String, context: Context) {
+        context.toast("复制 待实现")
     }
 
     /**
      * 剪切文件
      */
-    override fun cutFile(filePath: String) {
+    override fun cutFile(filePath: String, context: Context) {
+        context.toast("剪切 待实现")
     }
 
     /**
      * 粘贴文件
      */
-    override fun pasteFile(filePath: String) {
+    override fun pasteFile(filePath: String, context: Context) {
+        context.toast("剪切 待实现")
     }
 
     /**
      * 查看文件详情
      */
-    override fun infoFile(fileType: FileType?, filePath: String) {
-        FileTypeManage.getInstance().infoFile(filePath)
+    override fun infoFile(fileType: FileType?, filePath: String, context: Context) {
+        FileTypeManage.getInstance().infoFile(filePath, context)
     }
 
-    /**
-     * 复制文件
-     * @param sourceFile    原文件
-     * @param targetFile    复制的文件
-     */
-    fun copyFile(sourceFile: File, targetFile: File) : Boolean {
-        var success = false
-        // 新建文件输入流并对它进行缓冲
-        val input = FileInputStream(sourceFile)
-        val inBuff = BufferedInputStream(input)
-        // 新建文件输出流并对它进行缓冲
-        val output = FileOutputStream(targetFile)
-        val outBuff = BufferedOutputStream(output)
-        try {
-            // 缓冲数组
-            val b = ByteArray(1024 * 5)
-            while (true) {
-                val len = inBuff.read(b)
-                if (len == -1) {
-                    break
-                } else {
-                    outBuff.write(b, 0, len)
-                }
-            }
-            // 刷新此缓冲的输出流
-            outBuff.flush()
-            success = true
-        } catch (e: Exception) {
-            e.printStackTrace()
-            success = false
-        } finally {
-            //关闭流
-            inBuff.close()
-            outBuff.close()
-            output.close()
-            input.close()
-            return success
-        }
-    }
 }

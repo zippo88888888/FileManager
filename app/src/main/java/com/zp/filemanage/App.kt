@@ -2,10 +2,10 @@ package com.zp.filemanage
 
 import android.app.Application
 import com.zp.file.common.FileManageHelp
-import com.zp.file.content.*
 import com.zp.file.listener.IFileImageListener
+import com.zp.file.listener.IFileInfoListener
 import com.zp.file.listener.IFileTypeListener
-import com.zp.file.listener.IJumpListener
+import com.zp.file.listener.JumpByTypeListener
 
 class App : Application() {
 
@@ -14,7 +14,8 @@ class App : Application() {
         FileManageHelp.getInstance()
                 .setFileTypeListener(IFileTypeListener())
                 .setImgeLoad(IFileImageListener())
-                .setJumpListener(IJumpListener())
+                .setJumpListener(JumpByTypeListener())
+                .setFileInfoListener(IFileInfoListener())
                 .setMaxLength(9, "最大选取数量：9")
                 .setCanRightTouch(true)
                 .setShowHiddenFile(false)

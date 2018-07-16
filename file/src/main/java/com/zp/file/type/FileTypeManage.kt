@@ -28,9 +28,9 @@ class FileTypeManage {
         fileType.loadingFile(filePath, pic)
     }
 
-    fun infoFile(filePath: String) {
+    fun infoFile(filePath: String, context: Context) {
         fileType = getFileType(filePath)
-        fileType.infoFile(filePath)
+        fileType.infoFile(filePath, context)
     }
 
     fun getFileType(filePath: String) =

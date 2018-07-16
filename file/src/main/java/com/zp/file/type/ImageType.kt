@@ -8,9 +8,6 @@ import com.zp.file.common.FileManageHelp
 class ImageType : FileType {
 
     override fun openFile(filePath: String, view: View, context: Context) {
-//        context.jumpActivity(PicActivity::class.java, ArrayMap<String, Any>().apply {
-//            put("filePath", filePath)
-//        })
         FileManageHelp.getInstance().getJumpListener()?.jumpImage(filePath, view, context)
     }
 

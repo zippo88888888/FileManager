@@ -200,7 +200,7 @@ class FileManageActivity : FileActivity() {
     private fun createCallDialog(bean: FileBean, position: Int): Boolean {
         AlertDialog.Builder(this).apply {
             setTitle("请选择")
-            setItems(arrayOf("复制", "剪切", "删除文件", "查看详情"), { dialog, which ->
+            setItems(arrayOf("复制", "剪切", "粘贴", "删除文件", "查看详情"), { dialog, which ->
                 jumpByWhich(bean, which, position)
                 dialog.dismiss()
             })
@@ -212,13 +212,14 @@ class FileManageActivity : FileActivity() {
 
     private fun jumpByWhich(bean: FileBean, which: Int, position: Int) {
         when (which) {
-            0 -> toast("复制 待实现")
-            1-> toast("剪切 待实现")
-            2 -> manage?.deleteFile(this, bean.filePath, { isSuccess ->
+            0 -> manage?.copyFile(bean.filePath, this)
+            1 -> manage?.cutFile(bean.filePath, this)
+            2 -> manage?.pasteFile(bean.filePath, this)
+            3 -> manage?.deleteFile(this, bean.filePath, { isSuccess ->
                 if (isSuccess) fileAdapter.deleteFile(bean, position)
                 else toast("暂不支持删除多个文件，删除失败")
             })
-            3-> toast("查看详情 待实现")
+            4 -> manage?.infoFile(null, bean.filePath, this)
         }
     }
 

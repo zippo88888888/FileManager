@@ -27,8 +27,10 @@ FileManageHelp.getInstance().start(this,"指定目录")<br>
 如果上述类型不能满足，可自定义文件类型！<br>
 &nbsp;&nbsp;&nbsp;1、新建一个类 : FileType，实现里面的openFile()、loadingFile()方法<br>
 &nbsp;&nbsp;&nbsp;2、新建一个类 : FileTypeListener，实现里面的getFileType()方法(参考IFileTypeListener)<br><br>
-&nbsp;&nbsp;&nbsp;3、新建一个类 : JumpByTypeListener，实现里面的jump()方法(参考JumpByTypeListener)<br><br>
-&nbsp;&nbsp;&nbsp;4、在Application中<br>FileManageHelp.getInstance().setFileTypeListener(FileTypeListener()).setJumpListener(JumpByTypeListener())即可 <br><br>
+&nbsp;&nbsp;&nbsp;3、新建一个类 : JumpByTypeListener，自己新建jump()方法(参考JumpByTypeListener)<br><br>
+&nbsp;&nbsp;&nbsp;4、在Application中<br>&nbsp;&nbsp;&nbsp;&nbsp;FileManageHelp.getInstance().setFileTypeListener(FileTypeListener()).setJumpListener(JumpByTypeListener())即可 <br>
+&nbsp;&nbsp;&nbsp;5、在openFile()方法中直接调用第4步的方法即可
+<br><br>
 4）关于自定义<br>
 查看 file 工程里面的 drawable,values里面的值，并在主工程目录下的相同位置 保持命名一致即可替换 颜色，图片，选中样式，或者自己修改file工程里面的样式
 

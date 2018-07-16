@@ -25,8 +25,8 @@ FileManageHelp.getInstance().start(this,"指定目录")<br>
 实现 FileResultListener 接口 重写 resultSuccess(list:ArrayList\<FileBean\>?)方法 <br><br>
 3) 文件类型拓展 <br><br>
 如果上述类型不能满足，可自定义文件类型！<br>
-&nbsp;&nbsp;&nbsp;1、继承自FileType，实现里面的openFile()、loadingFile()方法<br>
-&nbsp;&nbsp;&nbsp;2、继承自FileTypeListener，实现里面的getFileType()方法<br><br>
+&nbsp;&nbsp;&nbsp;1、新建一个类:FileType，实现里面的openFile()、loadingFile()方法<br>
+&nbsp;&nbsp;&nbsp;2、新建一个类:FileTypeListener，实现里面的getFileType()方法<br><br>
 &nbsp;&nbsp;&nbsp;3、在Application中FileManageHelp.getInstance().setFileTypeListener(FileTypeListener())即可 <br><br>
 4）关于自定义<br>
 查看 file 工程里面的 drawable,values里面的值，并在主工程目录下的相同位置 保持命名一致即可替换 颜色，图片，选中样式，或者自己修改file工程里面的样式

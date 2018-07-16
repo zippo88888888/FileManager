@@ -118,6 +118,7 @@ fun Activity.setStatusBarTransparent() {
 }
 
 fun Context.getColorById(colorID: Int) = ContextCompat.getColor(this, colorID)
+fun Context.getStringById(stringID: Int) = resources.getString(stringID)
 
 fun log(msg: String) {
     if (FileManageHelp.getInstance().isShowLog)

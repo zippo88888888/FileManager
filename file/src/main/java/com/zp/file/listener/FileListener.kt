@@ -12,10 +12,12 @@ import com.bumptech.glide.Glide
 import com.zp.file.R
 import com.zp.file.content.AUDIO_DIALOG_TAG
 import com.zp.file.content.checkFragmentByTag
+import com.zp.file.content.getStringById
 import com.zp.file.content.log
 import com.zp.file.type.*
 import com.zp.file.ui.AudioPlayDialog
 import com.zp.file.ui.PicActivity
+import com.zp.file.ui.VideoPlayActivity
 import java.io.File
 
 /**
@@ -75,12 +77,16 @@ class IJumpListener : JumpByTypeListener() {
 
     override fun jumpImage(filePath: String, view: View, context: Context) {
         context.startActivity(Intent(context, PicActivity::class.java).apply {
-            putExtra("filePath", filePath)
-        }, ActivityOptions.makeSceneTransitionAnimation(context as Activity, view, "jump_Pic").toBundle())
+            putExtra("picFilePath", filePath)
+        }, ActivityOptions.makeSceneTransitionAnimation(context as Activity, view,
+                context.getStringById(R.string.sharedElement_pic)).toBundle())
     }
 
     override fun jumpVideo(filePath: String, view: View, context: Context) {
-        log("jumpVideo")
+        context.startActivity(Intent(context, VideoPlayActivity::class.java).apply {
+            putExtra("videoFilePath", filePath)
+        }, ActivityOptions.makeSceneTransitionAnimation(context as Activity, view,
+                context.getStringById(R.string.sharedElement_video)).toBundle())
     }
 
     override fun jumpTxt(filePath: String, view: View, context: Context) {

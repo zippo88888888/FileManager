@@ -13,7 +13,7 @@ class PicActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pic)
         setStatusBarTransparent()
-        val filePath = intent.getStringExtra("filePath")
+        val filePath = intent.getStringExtra("picFilePath")
         FileManageHelp.getInstance().getImageLoad()?.loadImage(pic_show, filePath)
         pic_show.setOnClickListener { onBackPressed() }
     }

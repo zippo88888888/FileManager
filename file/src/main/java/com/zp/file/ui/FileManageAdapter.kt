@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.ImageView
 import com.zp.file.R
 import com.zp.file.common.FileManageHelp
 import com.zp.file.common.FileViewHolder
 import com.zp.file.content.FileBean
+import com.zp.file.content.getStringById
 import com.zp.file.content.toast
 import com.zp.file.type.FileTypeManage
+import com.zp.file.type.ImageType
 import org.jetbrains.annotations.NotNull
 import java.io.File
 
@@ -113,7 +116,14 @@ class FileManageAdapter(private var context: Context) : RecyclerView.Adapter<Fil
                     isSwipeEnable = FileManageHelp.getInstance().getCanRightTouch()
                     setIos(true).isLeftSwipe = true
                 }
-                FileTypeManage.getInstance().loadingFile(item.filePath, getView(R.id.item_file_pic))
+                getView<ImageView>(R.id.item_file_pic).apply {
+                    FileTypeManage.getInstance().loadingFile(item.filePath, this)
+                    transitionName = if (FileTypeManage.getInstance().getFileType(item.filePath) is ImageType) {
+                        context.getStringById(R.string.sharedElement_pic)
+                    } else {
+                        context.getStringById(R.string.sharedElement_video)
+                    }
+                }
                 holder.setViewVisibility(R.id.item_file_box_pic, !isManage)
                 getView<CheckBox>(R.id.item_file_box).apply {
                     visibility = if (isManage) View.VISIBLE else View.GONE

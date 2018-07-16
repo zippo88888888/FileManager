@@ -17,7 +17,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/file_other"
-            android:transitionName="jump_Pic" />
+            android:transitionName="jump_File" />
 
         <FrameLayout
             android:id="@+id/item_file_boxLayout"

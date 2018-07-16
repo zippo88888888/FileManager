@@ -3,4 +3,4 @@
     android:id="@+id/pic_show"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:transitionName="jump_Pic"/>
+    android:transitionName="@string/sharedElement_pic"/>

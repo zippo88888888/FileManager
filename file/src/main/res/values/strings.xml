@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">file</string>
+    <string name="sharedElement_pic">jump_pic</string>
+    <string name="sharedElement_video">jump_Video</string>
 </resources>

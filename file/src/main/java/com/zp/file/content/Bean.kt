@@ -15,11 +15,9 @@ data class FileBean(
 }
 
 data class FileInfoBean(
-        var fileName: String,
-        var isFile: Boolean, // true---文件；false---文件夹
-        var filePath: String,
-        var date: String,
-        var size: String
+        var duration: String,
+        var width: String,
+        var height: String
 )
 
 data class FilePathBean(

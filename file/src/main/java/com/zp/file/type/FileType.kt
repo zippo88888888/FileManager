@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import com.zp.file.common.FileManageHelp
+import com.zp.file.content.FileBean
 
 interface FileType {
 
@@ -24,9 +25,9 @@ interface FileType {
 
     /**
      * 文件详情
-     * @param filePath 文件路径
+     * @param bean 文件
      */
-    fun infoFile(filePath: String, context: Context) {
-        FileManageHelp.getInstance().getFileInfoListener()?.fileInfo(filePath, context)
+    fun infoFile(bean: FileBean, context: Context) {
+        FileManageHelp.getInstance().getFileInfoListener()?.fileInfo(bean, context)
     }
 }

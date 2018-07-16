@@ -1,6 +1,8 @@
 package com.zp.file.util
 
+import android.media.MediaPlayer
 import com.zp.file.content.FileBean
+import com.zp.file.content.FileInfoBean
 import com.zp.file.content.SD_ROOT
 import com.zp.file.listener.FileTask
 import java.io.*
@@ -129,6 +131,31 @@ class FileManageUtil {
             output.close()
             input.close()
             return success
+        }
+    }
+
+    /**
+     * 获取媒体信息
+     */
+    fun getMultimediaInfo(path: String, isVideo: Boolean = false): FileInfoBean {
+        var duration = -1
+        var width = "0"
+        var height = "0"
+        var mediaPlayer: MediaPlayer? = null
+        try {
+            mediaPlayer = MediaPlayer()
+            mediaPlayer.setDataSource(path)
+            mediaPlayer.prepare()
+            if (isVideo) {
+                width = mediaPlayer.videoWidth.toString()
+                height = mediaPlayer.videoHeight.toString()
+            }
+            duration = mediaPlayer.duration
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            mediaPlayer?.release()
+            return FileInfoBean(secToTime(duration / 1000), width, height)
         }
     }
 

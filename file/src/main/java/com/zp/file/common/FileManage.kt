@@ -2,6 +2,7 @@ package com.zp.file.common
 
 import android.content.Context
 import android.view.View
+import com.zp.file.content.FileBean
 import com.zp.file.type.FileType
 
 interface FileManage {
@@ -34,6 +35,6 @@ interface FileManage {
     /**
      * 查看文件详情
      */
-    fun infoFile(fileType: FileType?, filePath: String, context: Context)
+    fun infoFile(fileType: FileType?, bean: FileBean, context: Context)
 
 }

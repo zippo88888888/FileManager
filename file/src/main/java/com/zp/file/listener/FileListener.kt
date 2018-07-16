@@ -16,6 +16,7 @@ import com.zp.file.ui.VideoPlayActivity
 import java.io.File
 import android.support.v7.app.AlertDialog
 import com.zp.file.content.*
+import com.zp.file.ui.InfoDialog
 import com.zp.file.util.FileOpenUtil
 
 /**
@@ -139,13 +140,17 @@ open class JumpByTypeListener {
  * 文件详情
  */
 interface FileInfoListener {
-    fun fileInfo(filePath: String, context: Context)
+    fun fileInfo(bean: FileBean, context: Context)
 }
 
 class IFileInfoListener : FileInfoListener {
 
-    override fun fileInfo(filePath: String, context: Context) {
-        context.toast("查看详情 待实现")
+    override fun fileInfo(bean: FileBean, context: Context) {
+        val activity = context as AppCompatActivity
+        activity.checkFragmentByTag(INFO_DIALOG_TAG)
+        InfoDialog.newInstance(bean).apply {
+            show(activity.supportFragmentManager, INFO_DIALOG_TAG)
+        }
     }
 }
 

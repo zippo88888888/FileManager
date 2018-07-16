@@ -28,9 +28,9 @@ class FileTypeManage {
         fileType.loadingFile(filePath, pic)
     }
 
-    fun infoFile(filePath: String, context: Context) {
-        fileType = getFileType(filePath)
-        fileType.infoFile(filePath, context)
+    fun infoFile(bean: FileBean, context: Context) {
+        fileType = getFileType(bean.filePath)
+        fileType.infoFile(bean, context)
     }
 
     fun getFileType(filePath: String) =

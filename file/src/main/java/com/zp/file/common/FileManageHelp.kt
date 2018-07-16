@@ -3,6 +3,7 @@ package com.zp.file.common
 import android.content.Context
 import android.support.v4.util.ArrayMap
 import android.view.View
+import com.zp.file.content.FileBean
 import com.zp.file.content.jumpActivity
 import com.zp.file.content.toast
 import com.zp.file.listener.*
@@ -198,8 +199,8 @@ class FileManageHelp : FileManage {
     /**
      * 查看文件详情
      */
-    override fun infoFile(fileType: FileType?, filePath: String, context: Context) {
-        FileTypeManage.getInstance().infoFile(filePath, context)
+    override fun infoFile(fileType: FileType?, bean: FileBean, context: Context) {
+        FileTypeManage.getInstance().infoFile(bean, context)
     }
 
 }

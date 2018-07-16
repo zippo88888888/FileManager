@@ -29,6 +29,17 @@ const val MP4 = "mp4"
 const val _3GP = "3gp"
 
 const val TXT = "txt"
+const val XML = "xml"
+
+// word
+const val DOC = "docx"
+// excel
+const val XLS = "xlsx"
+// ppt
+const val PPT = "pptx"
+
+// pdf
+const val PDF = "pdf"
 
 const val ZIP = "zip"
 

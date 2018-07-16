@@ -3,6 +3,7 @@ package com.zp.file.type
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
+import com.zp.file.common.FileManageHelp
 import com.zp.file.content.*
 
 class FileTypeManage {
@@ -32,17 +33,7 @@ class FileTypeManage {
         fileType.infoFile(filePath)
     }
 
-    fun getFileType(filePath: String): FileType {
-        val index = filePath.lastIndexOf(".")
-        val typeStr = filePath.substring(index + 1, filePath.length)
-        return when (typeStr) {
-            PNG, JPG, GIF -> ImageType()
-            MP3, AAC -> AudioType()
-            MP4, _3GP -> VideoType()
-            TXT -> TxtType()
-            ZIP -> ZipType()
-            else -> OtherType()
-        }
-    }
+    fun getFileType(filePath: String) =
+            FileManageHelp.getInstance().getFileTypeListener()?.getFileType(filePath) ?: OtherType()
 
 }

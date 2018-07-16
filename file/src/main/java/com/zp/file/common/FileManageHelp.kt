@@ -42,11 +42,21 @@ class FileManageHelp : FileManage {
     var fileResultListener: FileResultListener? = null
 
     /**
+     * 设置文件类型监听
+     */
+    private var fileTypeListener: FileTypeListener? = IFileTypeListener()
+    fun getFileTypeListener() = fileTypeListener
+    fun setFileTypeListener(fileTypeListener: FileTypeListener): FileManageHelp {
+        this.fileTypeListener = fileTypeListener
+        return this
+    }
+
+    /**
      * 设置图片的加载方式
      */
     private var imageLoadeListener: FileImageListener? = IFileImageListener()
     fun getImageLoad() = imageLoadeListener
-    fun setImgeLoad(imageLoadeListener: FileImageListener?) : FileManageHelp {
+    fun setImgeLoad(imageLoadeListener: FileImageListener) : FileManageHelp {
         this.imageLoadeListener = imageLoadeListener
         return this
     }
@@ -56,7 +66,7 @@ class FileManageHelp : FileManage {
      */
     private var jumpListener: JumpByTypeListener? = IJumpListener()
     fun getJumpListener() = jumpListener
-    fun setJumpListener(jumpListener: JumpByTypeListener?): FileManageHelp {
+    fun setJumpListener(jumpListener: JumpByTypeListener): FileManageHelp {
         this.jumpListener = jumpListener
         return this
     }

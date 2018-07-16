@@ -4,21 +4,45 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.zp.file.R
-import com.zp.file.content.AUDIO_DIALOG_TAG
-import com.zp.file.content.checkFragmentByTag
-import com.zp.file.content.getStringById
-import com.zp.file.content.log
 import com.zp.file.type.*
 import com.zp.file.ui.AudioPlayDialog
 import com.zp.file.ui.PicActivity
 import com.zp.file.ui.VideoPlayActivity
 import java.io.File
+import android.support.v7.app.AlertDialog
+import com.zp.file.content.*
+import com.zp.file.util.FileOpenUtil
+
+/**
+ * 文件类型
+ */
+interface FileTypeListener {
+    fun getFileType(filePath: String): FileType
+}
+
+class IFileTypeListener : FileTypeListener {
+    override fun getFileType(filePath: String): FileType {
+        val index = filePath.lastIndexOf(".")
+        val typeStr = filePath.substring(index + 1, filePath.length)
+        return when (typeStr) {
+            PNG, JPG, GIF -> ImageType()
+            MP3, AAC -> AudioType()
+            MP4, _3GP -> VideoType()
+            TXT, XML -> TxtType()
+            ZIP -> ZipType()
+            DOC -> DocType()
+            XLS -> XlsType()
+            PPT -> PptType()
+            PDF -> PdfType()
+            else -> OtherType()
+        }
+    }
+}
 
 /**
  * 图片加载
@@ -62,6 +86,10 @@ abstract class JumpByTypeListener : BaseJumpByTypeListener {
     abstract fun jumpVideo(filePath: String, view: View, context: Context)
     abstract fun jumpTxt(filePath: String, view: View, context: Context)
     abstract fun jumpZip(filePath: String, view: View, context: Context)
+    abstract fun jumpDoc(filePath: String, view: View, context: Context)
+    abstract fun jumpXls(filePath: String, view: View, context: Context)
+    abstract fun jumpPpt(filePath: String, view: View, context: Context)
+    abstract fun jumpPdf(filePath: String, view: View, context: Context)
     abstract fun jumpOther(filePath: String, view: View, context: Context)
 }
 
@@ -91,20 +119,46 @@ class IJumpListener : JumpByTypeListener() {
 
     override fun jumpTxt(filePath: String, view: View, context: Context) {
         log("jumpTxt")
-        /*context.startActivity(Intent(Intent.ACTION_VIEW).apply {
-            addCategory("android.intent.category.DEFAULT")
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            setDataAndType(Uri.fromFile(File(filePath)), "text/plain")
-        })*/
+        FileOpenUtil.openTXT(filePath, view, context)
     }
 
     override fun jumpZip(filePath: String, view: View, context: Context) {
-        log("jumpZip")
+        AlertDialog.Builder(context).apply {
+            setTitle("请选择")
+            setItems(arrayOf("打开", "解压"), { dialog, which ->
+                dialog.dismiss()
+                if (which == 0) {
+                    FileOpenUtil.openZIP(filePath, view, context)
+                } else {
+                    // 解压文件
+                }
+            })
+            setPositiveButton("取消", { dialog, _ -> dialog.dismiss() })
+            show()
+        }
+    }
+
+    override fun jumpDoc(filePath: String, view: View, context: Context) {
+        FileOpenUtil.openDOC(filePath, view, context)
+    }
+
+    override fun jumpXls(filePath: String, view: View, context: Context) {
+        FileOpenUtil.openXLS(filePath, view, context)
+    }
+
+    override fun jumpPpt(filePath: String, view: View, context: Context) {
+        FileOpenUtil.openPPT(filePath, view, context)
+    }
+
+    override fun jumpPdf(filePath: String, view: View, context: Context) {
+        FileOpenUtil.openPDF(filePath, view, context)
     }
 
     override fun jumpOther(filePath: String, view: View, context: Context) {
         log("jumpOther")
+        context.toast("暂不支持预览该文件")
     }
+
 }
 
 

@@ -30,4 +30,20 @@ class MyJumpListener : JumpByTypeListener() {
     override fun jumpOther(filePath: String, view: View, context: Context) {
         context.toast("跳转 Other")
     }
+
+    override fun jumpDoc(filePath: String, view: View, context: Context) {
+        context.toast("跳转 Doc")
+    }
+
+    override fun jumpXls(filePath: String, view: View, context: Context) {
+        context.toast("跳转 Xls")
+    }
+
+    override fun jumpPpt(filePath: String, view: View, context: Context) {
+        context.toast("跳转 Ppt")
+    }
+
+    override fun jumpPdf(filePath: String, view: View, context: Context) {
+        context.toast("跳转 Pdf")
+    }
 }

@@ -1,5 +1,5 @@
 采用Kotlin编码， SwipeMenuView 该文件使用方式请参考https://github.com/jdsjlzx/LRecyclerView<br><br>
-支持操作音频，视频，图片，txt，zip等文件<br> 
+支持操作音频，视频，图片，txt，zip，word，Excel，ppt，pdf等文件<br> 
 支持查看指定文件类型<br> 
 支持音频，视频播放，图片查看，zip解压<br> 
 支持多选，最大数量限制<br> 

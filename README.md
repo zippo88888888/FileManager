@@ -7,11 +7,12 @@
 支持指定文件路径访问<br> 
 
 使用：<br>
-1) 在Application中 <br><br>
+1) 在Application中，请根据需要自行添加，初始均为为默认值<br><br>
 FileManageHelp.getInstance()<br>
-                .setFileTypeListener(IFileTypeListener()) // 设置文件类型<br>
+                .setFileTypeListener(IFileTypeListener()) // 获取文件类型<br>
                 .setImgeLoad(IFileImageListener()) // 图片加载方式<br>
-                .setJumpListener(IJumpListener()) // 跳转方式 <br>
+                .setJumpListener(JumpByTypeListener()) // 跳转方式 <br>
+                .setFileInfoListener(IFileInfoListener()) // 文件详情 <br>
                 .setMaxLength(9, "最大选取数量：9") <br>
                 .setCanRightTouch(true) // 滑动删除 <br>
                 .setShowHiddenFile(false) // 是否显示隐藏文件 <br>
@@ -25,12 +26,15 @@ FileManageHelp.getInstance().start(this,"指定目录")<br>
 实现 FileResultListener 接口 重写 resultSuccess(list:ArrayList\<FileBean\>?)方法 <br><br>
 3) 文件类型拓展 <br><br>
 如果上述类型不能满足，可自定义文件类型！<br>
-&nbsp;&nbsp;&nbsp;1、继承自FileType，实现里面的openFile()、loadingFile()方法<br>
-&nbsp;&nbsp;&nbsp;2、继承自FileTypeListener，实现里面的getFileType()方法<br><br>
-&nbsp;&nbsp;&nbsp;3、在Application中FileManageHelp.getInstance().setFileTypeListener(FileTypeListener())即可 <br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、新建一个类 : FileType，实现里面的openFile()、loadingFile()方法<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、新建一个类 : FileTypeListener，实现里面的getFileType()方法(参考IFileTypeListener)<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、新建一个类 : JumpByTypeListener，自己新建jump()方法(参考JumpByTypeListener)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、在Application中<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileManageHelp.getInstance().setFileTypeListener(FileTypeListener()).setJumpListener(JumpByTypeListener())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、在openFile()方法中直接调用第3步的方法即可
+<br><br>
 4）关于自定义<br>
 查看 file 工程里面的 drawable,values里面的值，并在主工程目录下的相同位置 保持命名一致即可替换 颜色，图片，选中样式，或者自己修改file工程里面的样式
 
-<br>zip解压，剪切，复制，粘贴功能还在努力将项目中的原代码独立出来...
+<br>zip解压，剪切，复制，粘贴，文件详情功能还在努力将项目中的原代码独立出来...
 
  

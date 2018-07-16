@@ -7,11 +7,12 @@
 支持指定文件路径访问<br> 
 
 使用：<br>
-1) 在Application中 <br><br>
+1) 在Application中，请根据需要自行添加，初始均为为默认值<br><br>
 FileManageHelp.getInstance()<br>
-                .setFileTypeListener(IFileTypeListener()) // 设置文件类型<br>
+                .setFileTypeListener(IFileTypeListener()) // 获取文件类型<br>
                 .setImgeLoad(IFileImageListener()) // 图片加载方式<br>
                 .setJumpListener(JumpByTypeListener()) // 跳转方式 <br>
+                .setFileInfoListener(IFileInfoListener()) // 文件详情 <br>
                 .setMaxLength(9, "最大选取数量：9") <br>
                 .setCanRightTouch(true) // 滑动删除 <br>
                 .setShowHiddenFile(false) // 是否显示隐藏文件 <br>

@@ -9,10 +9,10 @@
 使用：<br>
 1) 在Application中，请根据需要自行添加，初始均为为默认值<br><br>
 FileManageHelp.getInstance()<br>
-                .setFileTypeListener(IFileTypeListener()) // 获取文件类型<br>
-                .setImgeLoad(IFileImageListener()) // 图片加载方式<br>
+                .setFileTypeListener(FileTypeListener()) // 获取文件类型<br>
+                .setImgeLoad(FileImageListener()) // 图片加载方式<br>
                 .setJumpListener(JumpByTypeListener()) // 跳转方式 <br>
-                .setFileInfoListener(IFileInfoListener()) // 文件详情 <br>
+                .setFileInfoListener(FileInfoListener()) // 文件详情 <br>
                 .setMaxLength(9, "最大选取数量：9") <br>
                 .setCanRightTouch(true) // 滑动删除 <br>
                 .setShowHiddenFile(false) // 是否显示隐藏文件 <br>
@@ -21,8 +21,8 @@ FileManageHelp.getInstance()<br>
                 .setSortord(FileManageHelp.ASC) // 升序或降序<br>
                 .isShowLog = true // 是否显示日志<br><br>
 2) 在Activity或Fragment中<br><br>
-FileManageHelp.getInstance().start(this) // 默认SD卡根目录<br>
-FileManageHelp.getInstance().start(this,"指定目录")<br>
+&nbsp;FileManageHelp.getInstance().start(this) // 默认SD卡根目录<br>
+或FileManageHelp.getInstance().start(this,"指定目录")<br>
 实现 FileResultListener 接口 重写 resultSuccess(list:ArrayList\<FileBean\>?)方法 <br><br>
 3) 文件类型拓展 <br><br>
 如果上述类型不能满足，可自定义文件类型！<br>
@@ -35,6 +35,6 @@ FileManageHelp.getInstance().start(this,"指定目录")<br>
 4）关于自定义<br>
 查看 file 工程里面的 drawable,values里面的值，并在主工程目录下的相同位置 保持命名一致即可替换 颜色，图片，选中样式，或者自己修改file工程里面的样式
 
-<br>PS：zip解压功能还在努力将项目中的原代码独立出来...
+
 
  

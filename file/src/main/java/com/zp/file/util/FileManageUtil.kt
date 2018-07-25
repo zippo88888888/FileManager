@@ -10,8 +10,6 @@ import java.io.*
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import java.io.File.separator
-import java.nio.file.Files.isDirectory
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
@@ -98,7 +96,7 @@ class FileManageUtil {
         return timeStr
     }
 
-    private fun unitFormat(i: Int) = if (i in 0..9) "0" + Integer.toString(i) else "" + i
+    private fun unitFormat(i: Int) = if (i in 0..9) "0$i" else "$i"
 
     /**
      * 复制文件

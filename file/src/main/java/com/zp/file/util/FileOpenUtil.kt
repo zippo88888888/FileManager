@@ -6,6 +6,8 @@ import android.net.Uri
 import android.os.Build
 import android.support.v4.content.FileProvider
 import android.view.View
+import com.zp.file.common.FileManageHelp
+import com.zp.file.content.toast
 import java.io.File
 
 object FileOpenUtil {
@@ -47,23 +49,31 @@ object FileOpenUtil {
     }
 
     private fun open(filePath: String, context: Context, type: String) {
-        context.startActivity(Intent(Intent.ACTION_VIEW).apply {
-            addCategory("android.intent.category.DEFAULT")
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                // 或者不使用FileProvider ，直接将注释放开，删除file_manage_paths.xml文件也可以打开
-                /*val builder = StrictMode.VmPolicy.Builder()
-                StrictMode.setVmPolicy(builder.build())
-                val contentUri = Uri.fromFile(File(filePath))*/
-                val contentUri = FileProvider.getUriForFile(context,
-                        "${context.packageName}.fileManager.provider", File(filePath))
-                setDataAndType(contentUri, type)
-            } else {
-                val uri = Uri.fromFile(File(filePath))
-                setDataAndType(uri, type)
+        try {
+            context.startActivity(Intent(Intent.ACTION_VIEW).apply {
+                addCategory("android.intent.category.DEFAULT")
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    // 或者不使用FileProvider ，直接将注释放开，删除file_manage_paths.xml文件也可以打开
+                    /*val builder = StrictMode.VmPolicy.Builder()
+                    StrictMode.setVmPolicy(builder.build())
+                    val contentUri = Uri.fromFile(File(filePath))*/
+                    val contentUri = FileProvider.getUriForFile(context,
+                            "${context.packageName}.fileManager.provider", File(filePath))
+                    setDataAndType(contentUri, type)
+                } else {
+                    val uri = Uri.fromFile(File(filePath))
+                    setDataAndType(uri, type)
+                }
+            })
+        } catch (e: Exception) {
+            if (FileManageHelp.getInstance().isShowLog) {
+                e.printStackTrace()
             }
-        })
+            context.toast("文件类型可能不匹配或找不到打开该文件类型的程序，打开失败")
+        }
+
     }
 
 }

@@ -182,21 +182,21 @@ class FileManageHelp : FileManage {
      * 复制文件
      */
     override fun copyFile(filePath: String, context: Context) {
-        context.toast("复制 待实现")
+        context.toast("复制 暂时不用")
     }
 
     /**
      * 剪切文件
      */
     override fun cutFile(filePath: String, context: Context) {
-        context.toast("剪切 待实现")
+        context.toast("剪切 暂时不用")
     }
 
     /**
      * 粘贴文件
      */
     override fun pasteFile(filePath: String, context: Context) {
-        context.toast("剪切 待实现")
+        context.toast("剪切 暂时不用")
     }
 
     /**

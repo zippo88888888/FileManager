@@ -100,7 +100,7 @@ fun Context.toast(msg: String, duration: Int = Toast.LENGTH_SHORT) {
  * 跳转Activity
  */
 fun Context.jumpActivity(clazz: Any, map: ArrayMap<String, Any>? = null) {
-    if (clazz !is Class<*>) throw RuntimeException("clazz is not Activity")
+    if (clazz !is Class<*>) return
     startActivity(Intent(this, clazz).apply {
         if (map != null && map.isNotEmpty()) {
             putExtras(Bundle().apply {

@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_marginRight="3dp"
+        android:layout_marginEnd="3dp"
         tools:text="根目录" />
 
     <ImageView

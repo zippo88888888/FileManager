@@ -65,10 +65,11 @@ open class FileImageListener {
 open class JumpByTypeListener {
 
     open fun jumpAudio(filePath: String, view: View, context: Context) {
-        val activity = context as AppCompatActivity
-        activity.checkFragmentByTag(AUDIO_DIALOG_TAG)
-        AudioPlayDialog.getInstance(filePath).apply {
-            show(activity.supportFragmentManager, AUDIO_DIALOG_TAG)
+        (context as AppCompatActivity).apply {
+            checkFragmentByTag(AUDIO_DIALOG_TAG)
+            AudioPlayDialog.getInstance(filePath).apply {
+                show(supportFragmentManager, AUDIO_DIALOG_TAG)
+            }
         }
     }
 

@@ -32,7 +32,7 @@ FileManageHelp.getInstance()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、新建一个类 : FileTypeListener，重写里面的getFileType()方法(参考FileTypeListener)<br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、新建一个类 : JumpByTypeListener，自己新建jump()方法(参考JumpByTypeListener)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、在Application中<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileManageHelp.getInstance().setFileTypeListener(FileTypeListener()).setJumpListener(JumpByTypeListener())<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、在openFile()方法中直接调用第3步的方法即可
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、在openFile()方法中直接调用第3步的方法即可，详情见demo
 <br><br>
 4）关于自定义<br>
 查看 file 工程里面的 drawable,values里面的值，并在主工程目录下的相同位置 保持命名一致即可替换 颜色，图片，选中样式，或者自己修改file工程里面的样式

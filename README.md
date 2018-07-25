@@ -36,7 +36,10 @@ FileManageHelp.getInstance()<br>
 <br><br>
 4）关于自定义<br>
 查看 file 工程里面的 drawable,values里面的值，并在主工程目录下的相同位置 保持命名一致即可替换 颜色，图片，选中样式，或者自己修改file工程里面的样式
-
+<br><br>
+最后不要忘了权限<br>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><br>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 
  

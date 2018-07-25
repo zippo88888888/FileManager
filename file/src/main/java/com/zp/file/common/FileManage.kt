@@ -33,6 +33,11 @@ interface FileManage {
     fun pasteFile(filePath: String, context: Context)
 
     /**
+     * 解压文件
+     */
+    fun zipFile(filePath: String, outZipPath: String, context: Context)
+
+    /**
      * 查看文件详情
      */
     fun infoFile(fileType: FileType?, bean: FileBean, context: Context)

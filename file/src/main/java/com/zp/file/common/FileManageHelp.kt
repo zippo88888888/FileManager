@@ -1,15 +1,19 @@
 package com.zp.file.common
 
+import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Context
 import android.support.v4.util.ArrayMap
 import android.view.View
 import com.zp.file.content.FileBean
 import com.zp.file.content.jumpActivity
+import com.zp.file.content.log
 import com.zp.file.content.toast
 import com.zp.file.listener.*
 import com.zp.file.type.FileType
 import com.zp.file.type.FileTypeManage
 import com.zp.file.ui.FileManageActivity
+import com.zp.file.util.FileManageUtil
 import org.jetbrains.annotations.NotNull
 import java.io.File
 
@@ -45,7 +49,7 @@ class FileManageHelp : FileManage {
     /**
      * 设置文件类型监听
      */
-    private var fileTypeListener: FileTypeListener? = IFileTypeListener()
+    private var fileTypeListener: FileTypeListener? = FileTypeListener()
     fun getFileTypeListener() = fileTypeListener
     fun setFileTypeListener(fileTypeListener: FileTypeListener): FileManageHelp {
         this.fileTypeListener = fileTypeListener
@@ -55,7 +59,7 @@ class FileManageHelp : FileManage {
     /**
      * 文件详情
      */
-    private var fileInfoListener: FileInfoListener? = IFileInfoListener()
+    private var fileInfoListener: FileInfoListener? = FileInfoListener()
     fun getFileInfoListener() = fileInfoListener
     fun setFileInfoListener(fileInfoListener: FileInfoListener): FileManageHelp {
         this.fileInfoListener = fileInfoListener
@@ -65,7 +69,7 @@ class FileManageHelp : FileManage {
     /**
      * 设置图片的加载方式
      */
-    private var imageLoadeListener: FileImageListener? = IFileImageListener()
+    private var imageLoadeListener: FileImageListener? = FileImageListener()
     fun getImageLoad() = imageLoadeListener
     fun setImgeLoad(imageLoadeListener: FileImageListener) : FileManageHelp {
         this.imageLoadeListener = imageLoadeListener
@@ -172,7 +176,6 @@ class FileManageHelp : FileManage {
         CommonDialog(context).showDialog2({
             deleteListener.invoke(File(filePath).delete())
         }, {}, "你确定要删除吗？", "删除", "取消")
-
     }
 
     /**
@@ -194,6 +197,27 @@ class FileManageHelp : FileManage {
      */
     override fun pasteFile(filePath: String, context: Context) {
         context.toast("剪切 待实现")
+    }
+
+    /**
+     * 解压文件
+     */
+    override fun zipFile(filePath: String, outZipPath: String, context: Context) {
+        val activity = context as Activity
+        val dialog = ProgressDialog(activity).run {
+            setProgressStyle(ProgressDialog.STYLE_SPINNER)
+            setMessage("解压中，请稍后...")
+            setCancelable(false)
+            show()
+            this
+        }
+        Thread({
+            val index = FileManageUtil.getInstance().extractFile(filePath, outZipPath)
+            activity.runOnUiThread({
+                dialog.dismiss()
+                activity.toast(if (index == 0) "解压成功" else "解压失败")
+            })
+        }).start()
     }
 
     /**

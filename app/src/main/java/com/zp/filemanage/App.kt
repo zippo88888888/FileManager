@@ -2,9 +2,9 @@ package com.zp.filemanage
 
 import android.app.Application
 import com.zp.file.common.FileManageHelp
-import com.zp.file.listener.IFileImageListener
-import com.zp.file.listener.IFileInfoListener
-import com.zp.file.listener.IFileTypeListener
+import com.zp.file.listener.FileInfoListener
+import com.zp.file.listener.FileImageListener
+import com.zp.file.listener.FileTypeListener
 import com.zp.file.listener.JumpByTypeListener
 
 class App : Application() {
@@ -12,10 +12,10 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         FileManageHelp.getInstance()
-                .setFileTypeListener(IFileTypeListener())
-                .setImgeLoad(IFileImageListener())
+                .setFileTypeListener(FileTypeListener())
+                .setImgeLoad(FileImageListener())
                 .setJumpListener(JumpByTypeListener())
-                .setFileInfoListener(IFileInfoListener())
+                .setFileInfoListener(FileInfoListener())
                 .setMaxLength(9, "最大选取数量：9")
                 .setCanRightTouch(true)
                 .setShowHiddenFile(false)

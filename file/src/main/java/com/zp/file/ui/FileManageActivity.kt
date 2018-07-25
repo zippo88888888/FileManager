@@ -47,7 +47,7 @@ class FileManageActivity : FileActivity() {
 
     override fun getContentView() = R.layout.activity_file_manage
 
-    override fun getFileManage() = FileManageHelp()
+    override fun getFileManage() = FileManageHelp.getInstance()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.file_menu, menu)
@@ -248,6 +248,11 @@ class FileManageActivity : FileActivity() {
     private fun setEmptyByListSize(size: Int) {
         file_manage_empty.visibility = if (size <= 0) View.VISIBLE
         else View.GONE
+    }
+
+    override fun telActivity(oldPath: String, outZipPath: String?) {
+        val outPath = outZipPath ?: SD_ROOT
+        manage?.zipFile(oldPath, outPath, this)
     }
 
     override fun onBackPressed() {

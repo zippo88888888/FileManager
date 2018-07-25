@@ -8,7 +8,7 @@ import java.io.File
 import java.lang.ref.WeakReference
 import java.util.ArrayList
 
-class FileTask(util: FileManageUtil, private var listener: (ArrayList<FileBean>) -> Unit)
+class FileTask(util: FileManageUtil, private var listener: (ArrayList<FileBean>) -> Unit, private var isOnlyFolder: Boolean)
     : AsyncTask<String, Unit, ArrayList<FileBean>>() {
 
     private val week: WeakReference<FileManageUtil> by lazy { WeakReference(util) }
@@ -31,7 +31,7 @@ class FileTask(util: FileManageUtil, private var listener: (ArrayList<FileBean>)
 
         val list = ArrayList<FileBean>()
         val file = File(path)
-        val listFiles = file.listFiles(LowFileFilter(FileManageHelp.getInstance().getFileFilterArray()))
+        val listFiles = file.listFiles(LowFileFilter(FileManageHelp.getInstance().getFileFilterArray(), isOnlyFolder))
         listFiles?.forEach {
             if (isShowHiddenFile) { // 是否显示隐藏文件
                 val bean = FileBean(it.name, it.isFile, it.path,

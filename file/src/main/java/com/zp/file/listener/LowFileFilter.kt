@@ -3,9 +3,17 @@ package com.zp.file.listener
 import java.io.File
 import java.io.FileFilter
 
-class LowFileFilter(private var fileArray: Array<String>?) : FileFilter {
+/**
+ * 过滤规则
+ * @param fileArray 规则
+ * @param isOnlyFolder 是否只需要显示文件夹
+ */
+class LowFileFilter(private var fileArray: Array<String>?, private var isOnlyFolder: Boolean) : FileFilter {
 
     override fun accept(file: File): Boolean {
+        if (isOnlyFolder) { // 只显示文件夹
+            return file.isDirectory
+        }
         if (file.isDirectory) { // 文件夹直接返回
             return true
         }

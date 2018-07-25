@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?><!--<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_sort_rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/dialog_folder_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackground"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/default_divider_padding"
+            android:paddingRight="@dimen/default_divider_padding"
+            android:paddingTop="5dp"
+            android:text="确定"
+            android:textColor="@color/file_manager_tool_bar_color" />
+
+        <TextView
+            android:id="@+id/dialog_folder_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_toStartOf="@+id/dialog_folder_down"
+            android:background="?selectableItemBackground"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/default_divider_padding"
+            android:paddingRight="@dimen/default_divider_padding"
+            android:paddingTop="5dp"
+            android:text="取消"
+            android:textColor="@color/file_manager_tool_bar_color" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/dialog_folder_path_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="#f1f1f1"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="none">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/dialog_folder_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
+
+    <!--
+    </android.support.v4.widget.NestedScrollView>-->

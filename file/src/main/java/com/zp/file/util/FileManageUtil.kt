@@ -4,11 +4,17 @@ import android.media.MediaPlayer
 import com.zp.file.content.FileBean
 import com.zp.file.content.FileInfoBean
 import com.zp.file.content.SD_ROOT
+import com.zp.file.content.log
 import com.zp.file.listener.FileTask
 import java.io.*
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import java.io.File.separator
+import java.nio.file.Files.isDirectory
+import java.util.zip.ZipEntry
+import java.util.zip.ZipInputStream
+
 
 class FileManageUtil {
 
@@ -34,8 +40,8 @@ class FileManageUtil {
         throw RuntimeException("请使用\"getList(filePath: String?, listener: (ArrayList<FileBean>) -> Unit)\"方法")
     }
 
-    fun getList(filePath: String?, listener: (ArrayList<FileBean>) -> Unit) {
-        FileTask(this, listener).execute(if (filePath.isNullOrEmpty()) this.filePath else filePath)
+    fun getList(filePath: String?, listener: (ArrayList<FileBean>) -> Unit, isOnlyFolder: Boolean = false) {
+        FileTask(this, listener, isOnlyFolder).execute(if (filePath.isNullOrEmpty()) this.filePath else filePath)
     }
 
     /**
@@ -131,6 +137,52 @@ class FileManageUtil {
             output.close()
             input.close()
             return success
+        }
+    }
+
+    /**
+     * 解压文件
+     */
+    fun extractFile(zipFileName: String, outPutDir: String): Int {
+        var index = 0
+        var zipInputStream: ZipInputStream? = null
+        val zipEntry: ZipEntry
+        var outputStream: FileOutputStream? = null
+        var name: String
+        try {
+            zipInputStream = ZipInputStream(FileInputStream(zipFileName))
+            zipEntry = zipInputStream.nextEntry
+            while (zipEntry != null) {
+                name = zipEntry.name
+                if (zipEntry.isDirectory) {
+                    name = name.substring(0, name.length - 1)
+                    val file = File(outPutDir + File.separator + name)
+                    file.mkdirs()
+                } else {
+                    val file = File(outPutDir + File.separator + name)
+                    file.createNewFile()
+                    outputStream = FileOutputStream(file)
+                    var ch = 0
+                    val bytes = ByteArray(1024)
+                    while (ch != -1) {
+                        ch = zipInputStream.read(bytes)
+                        outputStream.write(bytes, 0, ch)
+                        outputStream.flush()
+                    }
+                }
+            }
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+            index = -1
+            log("解压失败")
+        } finally {
+            outputStream?.close()
+            try {
+                if (zipInputStream != null) zipInputStream.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            return index
         }
     }
 

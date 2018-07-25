@@ -10,27 +10,23 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.zp.file.R
 import com.zp.file.type.*
-import com.zp.file.ui.AudioPlayDialog
-import com.zp.file.ui.PicActivity
-import com.zp.file.ui.VideoPlayActivity
 import java.io.File
 import android.support.v7.app.AlertDialog
 import com.zp.file.content.*
-import com.zp.file.ui.InfoDialog
+import com.zp.file.ui.*
 import com.zp.file.util.FileOpenUtil
+
 
 /**
  * 文件类型
  */
-interface FileTypeListener {
-    fun getFileType(filePath: String): FileType
-}
+open class FileTypeListener {
 
-class IFileTypeListener : FileTypeListener {
-    override fun getFileType(filePath: String): FileType {
-        val index = filePath.lastIndexOf(".")
-        val typeStr = filePath.substring(index + 1, filePath.length)
-        return when (typeStr) {
+    open fun getFileType(filePath: String): FileType {
+        val typeStr = filePath.run {
+            substring(lastIndexOf(".") + 1, length)
+        }
+        return when (typeStr.toLowerCase()) {
             PNG, JPG, GIF -> ImageType()
             MP3, AAC -> AudioType()
             MP4, _3GP -> VideoType()
@@ -45,15 +41,12 @@ class IFileTypeListener : FileTypeListener {
     }
 }
 
+
 /**
  * 图片加载
  */
-interface FileImageListener {
-    fun loadImage(imageView: ImageView, path: String)
-}
-
-class IFileImageListener : FileImageListener {
-    override fun loadImage(imageView: ImageView, path: String) {
+open class FileImageListener {
+    open fun loadImage(imageView: ImageView, path: String) {
         imageView.scaleType = ImageView.ScaleType.CENTER_CROP
         Glide.with(imageView.context)
                 .load(File(path))
@@ -106,7 +99,13 @@ open class JumpByTypeListener {
                 if (which == 0) {
                     FileOpenUtil.openZIP(filePath, view, context)
                 } else {
+                    val activity = context as FileManageActivity
+                    activity.checkFragmentByTag(FOLDER_DIALOG_TAG)
                     // 解压文件
+                    FolderDialog.newInstance(filePath).apply {
+                        telActivityListener = activity
+                        show(activity.supportFragmentManager, FOLDER_DIALOG_TAG)
+                    }
                 }
             })
             setPositiveButton("取消", { dialog, _ -> dialog.dismiss() })
@@ -136,20 +135,17 @@ open class JumpByTypeListener {
     }
 }
 
+
 /**
  * 文件详情
  */
-interface FileInfoListener {
-    fun fileInfo(bean: FileBean, context: Context)
-}
-
-class IFileInfoListener : FileInfoListener {
-
-    override fun fileInfo(bean: FileBean, context: Context) {
-        val activity = context as AppCompatActivity
-        activity.checkFragmentByTag(INFO_DIALOG_TAG)
-        InfoDialog.newInstance(bean).apply {
-            show(activity.supportFragmentManager, INFO_DIALOG_TAG)
+open class FileInfoListener {
+    open fun fileInfo(bean: FileBean, context: Context) {
+        (context as AppCompatActivity).apply {
+            checkFragmentByTag(INFO_DIALOG_TAG)
+            InfoDialog.newInstance(bean).apply {
+                show(supportFragmentManager, INFO_DIALOG_TAG)
+            }
         }
     }
 }

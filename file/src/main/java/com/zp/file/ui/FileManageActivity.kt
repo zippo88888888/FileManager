@@ -22,16 +22,6 @@ import java.io.File
 
 /**
  * 文件选择 2018-7-4
- *
- * description: 支持音频，视频，图片，txt，zip
- *              支持音频，视频播放，图片查看，zip解压
- *              支持单选，多选，返回上一级选中
- *              支持列表，网格，瀑布流无缝切换
- *              支持指定文件路径访问
- *              支持图片自定义查看
- *              支持音频自定义播放
- *              支持视频自定义播放
- *
  * version: 1.0
  */
 class FileManageActivity : FileActivity() {

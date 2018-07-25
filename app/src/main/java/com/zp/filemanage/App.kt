@@ -4,17 +4,17 @@ import android.app.Application
 import com.zp.file.common.FileManageHelp
 import com.zp.file.listener.FileInfoListener
 import com.zp.file.listener.FileImageListener
-import com.zp.file.listener.FileTypeListener
-import com.zp.file.listener.JumpByTypeListener
+import com.zp.filemanage.custom.MyFileTypeListener
+import com.zp.filemanage.custom.MyJumpListener
 
 class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
         FileManageHelp.getInstance()
-                .setFileTypeListener(FileTypeListener())
+                .setFileTypeListener(MyFileTypeListener())
                 .setImgeLoad(FileImageListener())
-                .setJumpListener(JumpByTypeListener())
+                .setJumpListener(MyJumpListener())
                 .setFileInfoListener(FileInfoListener())
                 .setMaxLength(9, "最大选取数量：9")
                 .setCanRightTouch(true)

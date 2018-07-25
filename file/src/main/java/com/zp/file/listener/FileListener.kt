@@ -99,12 +99,13 @@ open class JumpByTypeListener {
                 if (which == 0) {
                     FileOpenUtil.openZIP(filePath, view, context)
                 } else {
-                    val activity = context as FileManageActivity
-                    activity.checkFragmentByTag(FOLDER_DIALOG_TAG)
-                    // 解压文件
-                    FolderDialog.newInstance(filePath).apply {
-                        telActivityListener = activity
-                        show(activity.supportFragmentManager, FOLDER_DIALOG_TAG)
+                    (context as FileManageActivity).apply {
+                        val activity = this
+                        checkFragmentByTag(FOLDER_DIALOG_TAG)
+                        FolderDialog.newInstance(filePath).apply {
+                            telActivityListener = activity
+                            show(supportFragmentManager, FOLDER_DIALOG_TAG)
+                        }
                     }
                 }
             })

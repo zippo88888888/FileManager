@@ -41,16 +41,16 @@ FileManageHelp.getInstance()<br>
 \<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /\><br>
 \<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /\><br><br>
 部分截图如下<br>
-主界面<br>
-<img src = "file/src/main/assets/pic/file_manager_main.png" width = 300px></br>
+主界面<br> 
+<img src = "file/src/main/assets/file_manager_main.png" width = 300px></br>
 排序方式<br>
-<img src = "file/src/main/assets/pic/file_manager_sort.png" width = 300px></br>
+<img src = "file/src/main/assets/file_manager_sort.png" width = 300px></br>
 选择文件<br>
-<img src = "file/src/main/assets/pic/file_manager_selected.png" width = 300px></br>
+<img src = "file/src/main/assets/file_manager_selected.png" width = 300px></br>
 音频播放<br>
-<img src = "file/src/main/assets/pic/file_manager_music.png" width = 300px></br>
+<img src = "file/src/main/assets/file_manager_music.png" width = 300px></br>
 视频播放<br>
-<img src = "file/src/main/assets/pic/file_manager_video.png" width = 300px></br>
+<img src = "file/src/main/assets/file_manager_video.png" width = 300px></br>
 
 
  

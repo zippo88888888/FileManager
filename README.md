@@ -41,10 +41,10 @@ FileManageHelp.getInstance()<br>
 \<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /\><br>
 \<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /\><br><br>
 部分截图如下<br><br>
-主界面 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 排序方式 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 选择文件
-<img src = "file/src/main/assets/file_manager_main.png" width = 300px>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+主界面  排序方式  选择文件
+<img src = "file/src/main/assets/file_manager_main.png" width = 300px>
 
-<img src = "file/src/main/assets/file_manager_sort.png" width = 300px>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src = "file/src/main/assets/file_manager_sort.png" width = 300px>
 
 <img src = "file/src/main/assets/file_manager_selected.png" width = 300px>
 

@@ -24,12 +24,14 @@ const val GIF = "gif"
 
 const val MP3 = "mp3"
 const val AAC = "aac"
+const val WAV = "wav"
 
 const val MP4 = "mp4"
 const val _3GP = "3gp"
 
 const val TXT = "txt"
 const val XML = "xml"
+const val JSON = "json"
 
 // word
 const val DOC = "docx"

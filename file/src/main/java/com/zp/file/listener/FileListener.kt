@@ -28,9 +28,9 @@ open class FileTypeListener {
         }
         return when (typeStr.toLowerCase()) {
             PNG, JPG, GIF -> ImageType()
-            MP3, AAC -> AudioType()
+            MP3, AAC, WAV -> AudioType()
             MP4, _3GP -> VideoType()
-            TXT, XML -> TxtType()
+            TXT, XML, JSON -> TxtType()
             ZIP -> ZipType()
             DOC -> DocType()
             XLS -> XlsType()

@@ -38,7 +38,7 @@ class FileTask(util: FileManageUtil, private var listener: (ArrayList<FileBean>)
                         week.get()?.getFormatFileDate(it.lastModified()) ?: "未知时间",
                         it.lastModified().toString(),
                         week.get()?.getFileSize(it.length()) ?: "0B",
-                        "")
+                        it.length())
                 list.add(bean)
             } else {
                 if (!it.isHidden) {
@@ -46,26 +46,27 @@ class FileTask(util: FileManageUtil, private var listener: (ArrayList<FileBean>)
                             week.get()?.getFormatFileDate(it.lastModified()) ?: "未知时间",
                             it.lastModified().toString(),
                             week.get()?.getFileSize(it.length()) ?: "0B",
-                            "")
+                            it.length())
                     list.add(bean)
                 }
             }
         }
 
         // 排序相关
-
         val sortordByWhat = FileManageHelp.getInstance().getSortordByWhat()
         val sortord = FileManageHelp.getInstance().getSortord()
 
-        when (sortordByWhat) {
-            FileManageHelp.BY_NAME -> list.sortBy { it.fileName }
-            FileManageHelp.BY_DATE -> list.sortBy { it.originalDate }
-            FileManageHelp.BY_SIZE -> list.sortBy { it.size }
-        }
-        when (sortord) {
-            FileManageHelp.ASC -> {
+        if (sortord == FileManageHelp.ASC) {
+            when (sortordByWhat) {
+                FileManageHelp.BY_NAME -> list.sortBy { it.fileName }
+                FileManageHelp.BY_DATE -> list.sortBy { it.originalDate }
+                FileManageHelp.BY_SIZE -> list.sortBy { it.originaSize }
             }
-            FileManageHelp.DESC -> {
+        } else {
+            when (sortordByWhat) {
+                FileManageHelp.BY_NAME -> list.sortByDescending { it.fileName }
+                FileManageHelp.BY_DATE -> list.sortByDescending { it.originalDate }
+                FileManageHelp.BY_SIZE -> list.sortByDescending { it.originaSize }
             }
         }
         return list

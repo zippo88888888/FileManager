@@ -33,7 +33,7 @@ class FileManageUtil {
         val list = ArrayList<FileBean>()
         File(this.filePath).listFiles()?.forEach {
             list.add(FileBean(it.name, it.isFile, it.path, getFormatFileDate(it.lastModified()),
-                    it.lastModified().toString(), getFileSize(it.length()), ""))
+                    it.lastModified().toString(), getFileSize(it.length()), it.length()))
         }
         throw RuntimeException("请使用\"getList(filePath: String?, listener: (ArrayList<FileBean>) -> Unit)\"方法")
     }

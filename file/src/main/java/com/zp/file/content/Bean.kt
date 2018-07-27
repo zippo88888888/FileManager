@@ -9,9 +9,9 @@ data class FileBean(
         var date: String,
         var originalDate: String, // 原始时间
         var size: String,
-        var originaSize: String // 原始大小
+        var originaSize: Long // 原始大小
 ) : Serializable {
-    constructor() : this("", false, "", "", "", "", "")
+    constructor() : this("", false, "", "", "", "", 0L)
 }
 
 data class FileInfoBean(

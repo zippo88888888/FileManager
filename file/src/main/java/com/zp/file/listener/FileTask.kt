@@ -58,13 +58,13 @@ class FileTask(util: FileManageUtil, private var listener: (ArrayList<FileBean>)
 
         if (sortord == FileManageHelp.ASC) {
             when (sortordByWhat) {
-                FileManageHelp.BY_NAME -> list.sortBy { it.fileName }
+                FileManageHelp.BY_NAME -> list.sortBy { it.fileName.toLowerCase() }
                 FileManageHelp.BY_DATE -> list.sortBy { it.originalDate }
                 FileManageHelp.BY_SIZE -> list.sortBy { it.originaSize }
             }
         } else {
             when (sortordByWhat) {
-                FileManageHelp.BY_NAME -> list.sortByDescending { it.fileName }
+                FileManageHelp.BY_NAME -> list.sortByDescending { it.fileName.toLowerCase() }
                 FileManageHelp.BY_DATE -> list.sortByDescending { it.originalDate }
                 FileManageHelp.BY_SIZE -> list.sortByDescending { it.originaSize }
             }

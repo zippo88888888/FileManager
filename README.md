@@ -1,4 +1,4 @@
-采用Kotlin编码， SwipeMenuView 该文件使用方式请参考https://github.com/jdsjlzx/LRecyclerView<br><br>
+采用Kotlin编码(100%兼容Java)， SwipeMenuView 该文件使用方式请--->>><a href="https://github.com/jdsjlzx/LRecyclerView">戳这里</a><<<---<br><br>
 支持操作音频，视频，图片，txt，zip，word，excel，ppt，pdf等文件<br> 
 支持查看指定文件类型<br> 
 支持音频，视频播放，图片查看，zip解压<br> 
@@ -39,7 +39,18 @@ FileManageHelp.getInstance()<br>
 <br><br>
 最后不要忘了权限<br>
 \<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /\><br>
-\<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /\>
+\<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /\><br><br>
+部分截图如下<br><br>
+主界面<br><br>    
+<img src = "file/src/main/assets/file_manager_main.png" width = 300px><br><br>
+排序方式<br><br>
+<img src = "file/src/main/assets/file_manager_sort.png" width = 300px><br><br>
+选择文件<br><br>
+<img src = "file/src/main/assets/file_manager_selected.png" width = 300px><br><br>
+音频播放<br><br>
+<img src = "file/src/main/assets/file_manager_music.png" width = 300px></br><br>
+视频播放<br><br>
+<img src = "file/src/main/assets/file_manager_video.png" width = 300px></br><br>
 
 
  

@@ -34,9 +34,9 @@ FileManageHelp.getInstance()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、在openFile()方法中直接调用第3步的方法即可，详情见demo
 <br><br>
 4关于自定义<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查看 file 工程里面的 drawable,values里面的值，并在主工程目录下的相同位置 保持命名一致即可替换 颜色，图片，选中样式，或者自己修改file工程里面的样式
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查看 file 工程里面的 drawable,values里面的值，并在主工程目录下的相同位置 保持命名一致即可替换 颜色，图片，选&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中样式，或者自己修改file工程里面的样式
 <br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后不要忘了权限<br>
+最后不要忘了权限<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /\><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /\><br><br>
 部分截图如下<br><br>

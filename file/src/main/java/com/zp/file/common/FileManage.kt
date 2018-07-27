@@ -20,20 +20,12 @@ interface FileManage {
     /**
      * 复制文件
      */
-    @Deprecated("暂时不用")
-    fun copyFile(filePath: String, context: Context)
+    fun copyFile(filePath: String, outPath: String, context: Context)
 
     /**
      * 剪切文件
      */
-    @Deprecated("暂时不用")
-    fun cutFile(filePath: String, context: Context)
-
-    /**
-     * 粘贴文件
-     */
-    @Deprecated("暂时不用")
-    fun pasteFile(filePath: String, context: Context)
+    fun cutFile(filePath: String, outPath: String, context: Context)
 
     /**
      * 解压文件

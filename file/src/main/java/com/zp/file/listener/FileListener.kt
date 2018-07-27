@@ -103,7 +103,7 @@ open class JumpByTypeListener {
                     (context as FileManageActivity).apply {
                         val activity = this
                         checkFragmentByTag(FOLDER_DIALOG_TAG)
-                        FolderDialog.newInstance(filePath).apply {
+                        FolderDialog.newInstance(filePath, ZIP_TYPE).apply {
                             telActivityListener = activity
                             show(supportFragmentManager, FOLDER_DIALOG_TAG)
                         }

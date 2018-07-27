@@ -1,5 +1,6 @@
 package com.zp.file.ui
 
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -190,7 +191,7 @@ class FileManageActivity : FileActivity() {
     private fun createCallDialog(bean: FileBean, position: Int): Boolean {
         AlertDialog.Builder(this).apply {
             setTitle("请选择")
-            setItems(arrayOf(/*"复制", "剪切", "粘贴",*/ "删除文件", "查看详情"), { dialog, which ->
+            setItems(arrayOf(/*"复制", "剪切", */"删除文件", "查看详情"), { dialog, which ->
                 jumpByWhich(bean, which, position)
                 dialog.dismiss()
             })
@@ -202,20 +203,26 @@ class FileManageActivity : FileActivity() {
 
     private fun jumpByWhich(bean: FileBean, which: Int, position: Int) {
         when (which) {
+           /* 0 -> callFileByType(bean.filePath, COPY_TYPE)
+            1 -> callFileByType(bean.filePath, CUT_TYPE)
+            2 -> manage?.deleteFile(this, bean.filePath, { isSuccess ->
+                if (isSuccess) fileAdapter.deleteFile(bean, position)
+                else toast("暂不支持删除多个文件，删除失败")
+            })
+            3 -> manage?.infoFile(null, bean, this)*/
             0 -> manage?.deleteFile(this, bean.filePath, { isSuccess ->
                 if (isSuccess) fileAdapter.deleteFile(bean, position)
-                else toast("暂不支持删除多个文件，删除失败")
+                else toast("删除失败")
             })
             1 -> manage?.infoFile(null, bean, this)
+        }
+    }
 
-            /*0 -> manage?.copyFile(bean.filePath, this)
-            1 -> manage?.cutFile(bean.filePath, this)
-            2 -> manage?.pasteFile(bean.filePath, this)
-            3 -> manage?.deleteFile(this, bean.filePath, { isSuccess ->
-                if (isSuccess) fileAdapter.deleteFile(bean, position)
-                else toast("暂不支持删除多个文件，删除失败")
-            })
-            4 -> manage?.infoFile(null, bean.filePath, this)*/
+    private fun callFileByType(filePath: String, type: Int) {
+        checkFragmentByTag(FOLDER_DIALOG_TAG)
+        FolderDialog.newInstance(filePath, type).apply {
+            telActivityListener = this@FileManageActivity
+            show(supportFragmentManager, FOLDER_DIALOG_TAG)
         }
     }
 
@@ -240,9 +247,13 @@ class FileManageActivity : FileActivity() {
         else View.GONE
     }
 
-    override fun telActivity(oldPath: String, outZipPath: String?) {
-        val outPath = outZipPath ?: SD_ROOT
-        manage?.zipFile(oldPath, outPath, this)
+    override fun telActivity(oldPath: String, outPath: String?, type: Int) {
+        val outPath2 = outPath ?: SD_ROOT
+        when (type) {
+            COPY_TYPE -> manage?.copyFile(oldPath, outPath2, this)
+            CUT_TYPE -> manage?.cutFile(oldPath, outPath2, this)
+            ZIP_TYPE -> manage?.zipFile(oldPath, outPath2, this)
+        }
     }
 
     override fun onBackPressed() {

@@ -5,14 +5,12 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.support.v4.util.ArrayMap
 import android.view.View
-import com.zp.file.content.FileBean
-import com.zp.file.content.jumpActivity
-import com.zp.file.content.log
-import com.zp.file.content.toast
+import com.zp.file.content.*
 import com.zp.file.listener.*
 import com.zp.file.type.FileType
 import com.zp.file.type.FileTypeManage
 import com.zp.file.ui.FileManageActivity
+import com.zp.file.ui.FolderDialog
 import com.zp.file.util.FileManageUtil
 import org.jetbrains.annotations.NotNull
 import java.io.File
@@ -181,43 +179,22 @@ class FileManageHelp : FileManage {
     /**
      * 复制文件
      */
-    override fun copyFile(filePath: String, context: Context) {
-        context.toast("复制 暂时不用")
+    override fun copyFile(filePath: String, outPath: String, context: Context) {
+        callFileByType(filePath, outPath, context, COPY_TYPE)
     }
 
     /**
      * 剪切文件
      */
-    override fun cutFile(filePath: String, context: Context) {
-        context.toast("剪切 暂时不用")
-    }
-
-    /**
-     * 粘贴文件
-     */
-    override fun pasteFile(filePath: String, context: Context) {
-        context.toast("剪切 暂时不用")
+    override fun cutFile(filePath: String, outPath: String, context: Context) {
+        callFileByType(filePath, outPath, context, CUT_TYPE)
     }
 
     /**
      * 解压文件
      */
     override fun zipFile(filePath: String, outZipPath: String, context: Context) {
-        val activity = context as Activity
-        val dialog = ProgressDialog(activity).run {
-            setProgressStyle(ProgressDialog.STYLE_SPINNER)
-            setMessage("解压中，请稍后...")
-            setCancelable(false)
-            show()
-            this
-        }
-        Thread({
-            val index = FileManageUtil.getInstance().extractFile(filePath, outZipPath)
-            activity.runOnUiThread({
-                dialog.dismiss()
-                activity.toast(if (index == 0) "解压成功" else "解压失败")
-            })
-        }).start()
+        callFileByType(filePath, outZipPath, context, ZIP_TYPE)
     }
 
     /**
@@ -225,6 +202,33 @@ class FileManageHelp : FileManage {
      */
     override fun infoFile(fileType: FileType?, bean: FileBean, context: Context) {
         FileTypeManage.getInstance().infoFile(bean, context)
+    }
+
+    private fun callFileByType(filePath: String, outPath: String, context: Context, type: Int) {
+        val msg = when (type) {
+            COPY_TYPE -> "复制"
+            CUT_TYPE -> "剪切"
+            else -> "解压"
+        }
+        val activity = context as Activity
+        val dialog = ProgressDialog(activity).run {
+            setProgressStyle(ProgressDialog.STYLE_SPINNER)
+            setMessage("${msg}中，请稍后...")
+            setCancelable(false)
+            show()
+            this
+        }
+        Thread({
+            val isSuccess = when (type) {
+                COPY_TYPE -> FileManageUtil.getInstance().copyFile(filePath, outPath)
+                CUT_TYPE -> FileManageUtil.getInstance().cutFile(filePath, outPath)
+                else -> FileManageUtil.getInstance().extractFile(filePath, outPath)
+            }
+            activity.runOnUiThread ({
+                dialog.dismiss()
+                activity.toast(if (isSuccess) "${msg}成功" else "${msg}失败")
+            })
+        }).start()
     }
 
 }

@@ -19,5 +19,5 @@ abstract class FileActivity : AppCompatActivity(), FolderDialog.TelActivityListe
     abstract fun getFileManage(): FileManage?
     abstract fun init(savedInstanceState: Bundle?)
 
-    override fun telActivity(oldPath: String, outZipPath: String?) = Unit
+    override fun telActivity(oldPath: String, outPath: String?, type: Int) = Unit
 }

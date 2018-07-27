@@ -1,12 +1,14 @@
 package com.zp.file.util
 
 import android.media.MediaPlayer
+import com.zp.file.common.FileManageHelp
 import com.zp.file.content.FileBean
 import com.zp.file.content.FileInfoBean
 import com.zp.file.content.SD_ROOT
 import com.zp.file.content.log
 import com.zp.file.listener.FileTask
 import java.io.*
+import java.nio.channels.FileChannel
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -45,9 +47,8 @@ class FileManageUtil {
     /**
      * 时间戳格式化
      */
-    fun getFormatFileDate(seconds: Long) = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).run {
-        format(Date(seconds))
-    }!!
+    fun getFormatFileDate(seconds: Long) =
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).run { format(Date(seconds)) }
 
     /**
      * 获取指定文件大小
@@ -100,49 +101,51 @@ class FileManageUtil {
 
     /**
      * 复制文件
-     * @param sourceFile    原文件
-     * @param targetFile    复制的文件
      */
-    fun copyFile(sourceFile: File, targetFile: File) : Boolean {
-        var success = false
-        // 新建文件输入流并对它进行缓冲
-        val input = FileInputStream(sourceFile)
-        val inBuff = BufferedInputStream(input)
-        // 新建文件输出流并对它进行缓冲
-        val output = FileOutputStream(targetFile)
-        val outBuff = BufferedOutputStream(output)
+    fun copyFile(sourceFile: String, targetFile: String) : Boolean {
+        var success = true
+        val oldFile = File(sourceFile)
+        val outFile = File(targetFile + "/" + oldFile.name)
+
+        var inputChannel: FileChannel? = null
+        var outputChannel: FileChannel? = null
         try {
-            // 缓冲数组
-            val b = ByteArray(1024 * 5)
-            while (true) {
-                val len = inBuff.read(b)
-                if (len == -1) {
-                    break
-                } else {
-                    outBuff.write(b, 0, len)
-                }
-            }
-            // 刷新此缓冲的输出流
-            outBuff.flush()
-            success = true
+            inputChannel = FileInputStream(oldFile).channel
+            outputChannel = FileOutputStream(outFile).channel
+            outputChannel?.transferFrom(inputChannel, 0, inputChannel!!.size())
         } catch (e: Exception) {
-            e.printStackTrace()
+            if (FileManageHelp.getInstance().isShowLog) {
+                e.printStackTrace()
+            }
             success = false
         } finally {
-            //关闭流
-            inBuff.close()
-            outBuff.close()
-            output.close()
-            input.close()
+            inputChannel?.close()
+            outputChannel?.close()
             return success
         }
     }
 
     /**
+     * 剪切文件
+     */
+    fun cutFile(sourceFile: String, targetFile: String): Boolean {
+        var success = copyFile(sourceFile, targetFile)
+        success = try {
+            File(sourceFile).delete()
+        } catch (e: Exception) {
+            if (FileManageHelp.getInstance().isShowLog) {
+                e.printStackTrace()
+            }
+            false
+        }
+        return success
+    }
+
+    /**
      * 解压文件
      */
-    fun extractFile(zipFileName: String, outPutDir: String): Int {
-        var index = 0
+    fun extractFile(zipFileName: String, outPutDir: String): Boolean {
+        var flag = true
         var zipInputStream: ZipInputStream? = null
         val zipEntry: ZipEntry
         var outputStream: FileOutputStream? = null
@@ -171,7 +174,7 @@ class FileManageUtil {
             }
         } catch (e: FileNotFoundException) {
             e.printStackTrace()
-            index = -1
+            flag = false
             log("解压失败")
         } finally {
             outputStream?.close()
@@ -180,7 +183,7 @@ class FileManageUtil {
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-            return index
+            return flag
         }
     }
 

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.zp.file.R
+import com.zp.file.content.COPY_TYPE
 import com.zp.file.content.FileBean
 import com.zp.file.content.getDisplay
 import com.zp.file.content.log
@@ -22,13 +23,16 @@ import java.io.File
 class FolderDialog : DialogFragment() {
 
     companion object {
-        fun newInstance(filePath: String) = FolderDialog().apply {
-            arguments = Bundle().apply { putString("filePath", filePath) }
+        fun newInstance(filePath: String, type: Int) = FolderDialog().apply {
+            arguments = Bundle().apply {
+                putString("filePath", filePath)
+                putInt("type", type)
+            }
         }
     }
 
     interface TelActivityListener {
-        fun telActivity(oldPath: String, outZipPath: String?)
+        fun telActivity(oldPath: String, outPath: String?, type: Int)
     }
 
     var telActivityListener: TelActivityListener? = null
@@ -59,7 +63,9 @@ class FolderDialog : DialogFragment() {
         FileManageUtil.getInstance().getList(null, { list -> folderAdapter?.setData(list) }, true)
         dialog_folder_cancel.setOnClickListener { dismiss() }
         dialog_folder_down.setOnClickListener {
-            telActivityListener?.telActivity(arguments.getString("filePath"), getThisFilePath())
+            telActivityListener?.telActivity(
+                    arguments.getString("filePath"), getThisFilePath(),
+                    arguments.getInt("type", COPY_TYPE))
             dismiss()
         }
     }

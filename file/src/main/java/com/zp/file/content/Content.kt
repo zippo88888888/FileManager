@@ -50,6 +50,10 @@ const val AUDIO_DIALOG_TAG = "audioDialogTag"
 const val INFO_DIALOG_TAG = "infoDialogTag"
 const val FOLDER_DIALOG_TAG = "folderDialogTag"
 
+const val COPY_TYPE = 0x1001
+const val CUT_TYPE = 0x1002
+const val ZIP_TYPE = 0x1003
+
 /** SD卡的根目录  */
 val SD_ROOT by lazy {
     Environment.getExternalStorageDirectory().path

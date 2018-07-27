@@ -25,10 +25,10 @@ FileManageHelp.getInstance()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、打开文件管理 FileManageHelp.getInstance().start(this) // 默认SD卡根目录<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;或FileManageHelp.getInstance().start(this,"指定目录")
 <br><br>
-3) 文件类型拓展 <br><br>
-如果上述类型不能满足，可自定义文件类型！ 请注意：以下 " : " 是继承 ，不是 冒号<br>
+3) 文件类型拓展 <br>
+如果上述类型不能满足，可自定义文件类型！ <b>请注意：以下 " : " 是继承 ，不是 冒号</b><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、新建一个类 : FileType，重写里面的openFile()、loadingFile()方法<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、新建一个类 : FileTypeListener，重写里面的getFileType()方法(参考MyFileTypeListener)<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、新建一个类 : FileTypeListener，重写里面的getFileType()方法(参考MyFileTypeListener)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、新建一个类 : JumpByTypeListener，自己新建jump()方法(参考MyJumpByTypeListener)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、在Application中<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileManageHelp.getInstance().setFileTypeListener(FileTypeListener()).setJumpListener(JumpByTypeListener())<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、在openFile()方法中直接调用第3步的方法即可，详情见demo

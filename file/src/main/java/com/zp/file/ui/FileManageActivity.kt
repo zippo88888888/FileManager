@@ -1,6 +1,5 @@
 package com.zp.file.ui
 
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -11,7 +10,6 @@ import android.view.MenuItem
 import android.view.View
 import com.zp.file.R
 import com.zp.file.common.FileActivity
-import com.zp.file.common.FileManage
 import com.zp.file.common.FileManageHelp
 import com.zp.file.content.*
 import com.zp.file.util.FileManageUtil

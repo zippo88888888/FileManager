@@ -16,6 +16,9 @@ import com.zp.file.content.*
 import com.zp.file.ui.*
 import com.zp.file.util.FileOpenUtil
 
+interface TelActivityListener {
+    fun telActivity(oldPath: String, outPath: String?, type: Int)
+}
 
 /**
  * 文件类型

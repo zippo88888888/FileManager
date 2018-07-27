@@ -14,6 +14,7 @@ import com.zp.file.content.COPY_TYPE
 import com.zp.file.content.FileBean
 import com.zp.file.content.getDisplay
 import com.zp.file.content.log
+import com.zp.file.listener.TelActivityListener
 import com.zp.file.util.FileManageUtil
 import com.zp.file.util.RecycleViewDivider
 import com.zp.file.util.RefreshUtil
@@ -29,10 +30,6 @@ class FolderDialog : DialogFragment() {
                 putInt("type", type)
             }
         }
-    }
-
-    interface TelActivityListener {
-        fun telActivity(oldPath: String, outPath: String?, type: Int)
     }
 
     var telActivityListener: TelActivityListener? = null

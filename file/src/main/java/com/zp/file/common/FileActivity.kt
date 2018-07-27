@@ -2,9 +2,9 @@ package com.zp.file.common
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.zp.file.ui.FolderDialog
+import com.zp.file.listener.TelActivityListener
 
-abstract class FileActivity : AppCompatActivity(), FolderDialog.TelActivityListener {
+abstract class FileActivity : AppCompatActivity(), TelActivityListener {
 
     protected var manage: FileManage? = null
 

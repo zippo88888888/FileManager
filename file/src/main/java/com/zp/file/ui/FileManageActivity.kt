@@ -74,7 +74,7 @@ class FileManageActivity : FileActivity() {
                     barShow = false
                     setMenuState()
                 } else {
-                    FileManageHelp.getInstance().fileResultListener?.resultSuccess(fileAdapter.getSelectData())
+                    FileManageHelp.getInstance().fileResultListener?.invoke(fileAdapter.getSelectData())
                     finish()
                 }
             }

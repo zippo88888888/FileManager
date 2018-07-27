@@ -43,8 +43,8 @@ class FileManageHelp : FileManage {
         const val DESC = 0x2002
     }
 
-    /** 回调，哪个Activity中调用，就在哪个Activity中使用 */
-    var fileResultListener: FileResultListener? = null
+    /** 高阶函数回调，哪个Activity中调用，就在哪个Activity中使用 */
+    var fileResultListener: ((ArrayList<FileBean>?) -> Unit)? = null
 
     /**
      * 设置文件类型监听

@@ -16,13 +16,7 @@ class MainActivity : AppCompatActivity() {
                 toString()
             }
         }
-        // java调用
-        /*FileManageHelp.Companion.getInstance().setFileResultListener(new Function1<ArrayList<FileBean>, Unit>() {
-            @Override
-            public Unit invoke(ArrayList<FileBean> fileBeans) {
-                return null;
-            }
-        });*/
+
         main_jump.setOnClickListener {
 //            FileManageHelp.getInstance().jumpToFileUI(this, "$SD_ROOT/Pictures")
             FileManageHelp.getInstance().start(this)
@@ -30,3 +24,17 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
+/*
+        java调用
+
+        FileManageHelp.Companion.getInstance().start(this);
+
+        FileManageHelp.Companion.getInstance().setFileResultListener(new Function1<ArrayList<FileBean>, Unit>() {
+            @Override
+            public Unit invoke(ArrayList<FileBean> list) {
+                return null;
+            }
+        });
+
+*/

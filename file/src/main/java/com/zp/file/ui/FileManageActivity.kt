@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.zp.file.R
@@ -38,11 +37,6 @@ class FileManageActivity : FileActivity() {
 
     override fun getFileManage() = FileManageHelp.getInstance()
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.file_menu, menu)
-        return true
-    }
-
     private fun setMenuState() {
         file_manage_bar.menu.apply {
             findItem(R.id.menu_file_down).isVisible = barShow
@@ -53,8 +47,8 @@ class FileManageActivity : FileActivity() {
     }
 
     override fun init(savedInstanceState: Bundle?) {
-        setSupportActionBar(file_manage_bar)
         file_manage_bar.apply {
+            inflateMenu(R.menu.file_menu)
             setOnMenuItemClickListener { menu -> menuItemClick(menu) }
             setNavigationIcon(R.drawable.file_back)
             title = "文件管理"

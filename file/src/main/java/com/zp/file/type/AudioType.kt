@@ -6,7 +6,7 @@ import android.widget.ImageView
 import com.zp.file.R
 import com.zp.file.common.FileManageHelp
 
-class AudioType : FileType {
+open class AudioType : FileType {
 
     override fun openFile(filePath: String, view: View, context: Context) {
         FileManageHelp.getInstance().getJumpListener()?.jumpAudio(filePath, view, context)

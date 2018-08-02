@@ -112,7 +112,7 @@ class FileManageUtil {
         try {
             inputChannel = FileInputStream(oldFile).channel
             outputChannel = FileOutputStream(outFile).channel
-            outputChannel?.transferFrom(inputChannel, 0, inputChannel!!.size())
+            outputChannel?.transferFrom(inputChannel, 0, inputChannel?.size() ?: 0L)
         } catch (e: Exception) {
             if (FileManageHelp.getInstance().isShowLog) {
                 e.printStackTrace()

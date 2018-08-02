@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import com.zp.file.common.FileManageHelp
 
-class VideoType : FileType {
+open class VideoType : FileType {
 
     override fun openFile(filePath: String, view: View, context: Context) {
         FileManageHelp.getInstance().getJumpListener()?.jumpVideo(filePath, view, context)

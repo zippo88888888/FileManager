@@ -34,7 +34,6 @@
             android:id="@+id/dialog_info_fileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="3"
             android:textColor="@color/black"
             tools:text="aaa.mp3" />
 
@@ -57,7 +56,6 @@
             android:id="@+id/dialog_info_fileType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="3"
             android:textColor="@color/black"
             tools:text="aaa.mp3" />
 
@@ -80,7 +78,6 @@
             android:id="@+id/dialog_info_fileSize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="3"
             android:textColor="@color/black"
             tools:text="aaa.mp3" />
 
@@ -103,7 +100,6 @@
             android:id="@+id/dialog_info_fileDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="3"
             android:textColor="@color/black"
             tools:text="aaa.mp3" />
 
@@ -126,7 +122,6 @@
             android:id="@+id/dialog_info_filePath"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="3"
             android:textColor="@color/black"
             tools:text="aaa.mp3" />
 
@@ -168,7 +163,6 @@
                 android:id="@+id/dialog_info_fileDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="3"
                 android:textColor="@color/black"
                 android:text="获取中"
                 tools:text="aaa.mp3" />
@@ -187,13 +181,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="分辨率：" />
+                android:text="宽高比率：" />
 
             <TextView
                 android:id="@+id/dialog_info_fileFBL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="3"
                 android:textColor="@color/black"
                 android:text="获取中"
                 tools:text="aaa.mp3" />
@@ -217,7 +210,6 @@
                 android:id="@+id/dialog_info_fileOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="3"
                 android:textColor="@color/black"
                 tools:text="aaa.mp3" />
 

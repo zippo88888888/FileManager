@@ -2,6 +2,7 @@ package com.zp.file.ui
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.DialogInterface
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
@@ -15,6 +16,7 @@ import com.zp.file.R
 import com.zp.file.content.FileBean
 import com.zp.file.content.FileInfoBean
 import com.zp.file.content.getDisplay
+import com.zp.file.content.setNeedWH
 import com.zp.file.type.*
 import com.zp.file.util.FileManageUtil
 import kotlinx.android.synthetic.main.dialog_info_layout.*
@@ -59,11 +61,8 @@ class InfoDialog : DialogFragment(), Runnable {
         dialog_info_filePath.text = bean.filePath
 
         dialog_info_moreBox.setOnClickListener {
-            if (dialog_info_moreBox.isChecked) {
-                dialog_info_moreLayout.visibility = View.VISIBLE
-            } else {
-                dialog_info_moreLayout.visibility = View.GONE
-            }
+            dialog_info_moreLayout.visibility = if (dialog_info_moreBox.isChecked) View.VISIBLE
+            else View.GONE
         }
         when (fileType) {
             is ImageType -> {
@@ -94,12 +93,11 @@ class InfoDialog : DialogFragment(), Runnable {
 
     override fun onStart() {
         super.onStart()
-        val width = context.getDisplay()[0] * 0.88f
-        dialog.window.setLayout(width.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+        setNeedWH()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         handler?.removeCallbacks(this)
         handler?.removeCallbacksAndMessages(null)
         handler = null
@@ -107,10 +105,10 @@ class InfoDialog : DialogFragment(), Runnable {
 
     override fun run() {
         if (fileType !is AudioType && fileType !is VideoType) return
-        val msg = Message()
-        msg.what = 0
-        msg.obj = FileManageUtil.getInstance().getMultimediaInfo(filePath, fileType is VideoType)
-        handler?.sendMessage(msg)
+        handler?.sendMessage(Message().apply {
+            what = 0
+            obj = FileManageUtil.getInstance().getMultimediaInfo(filePath, fileType is VideoType)
+        })
     }
 
     class InfoHandler(dialog: InfoDialog) : Handler() {
@@ -121,13 +119,15 @@ class InfoDialog : DialogFragment(), Runnable {
         override fun handleMessage(msg: Message?) {
             if (msg?.what == 0) {
                 val bean = msg.obj as FileInfoBean
-                when (week.get()?.fileType) {
-                    is AudioType -> {
-                        week.get()?.dialog_info_fileDuration?.text = bean.duration
-                    }
-                    is VideoType -> {
-                        week.get()?.dialog_info_fileDuration?.text = bean.duration
-                        week.get()?.dialog_info_fileFBL?.text = "${bean.width} * ${bean.height}"
+                week.get()?.apply {
+                    when (fileType) {
+                        is AudioType -> {
+                            dialog_info_fileDuration.text = bean.duration
+                        }
+                        is VideoType -> {
+                            dialog_info_fileDuration.text = bean.duration
+                            dialog_info_fileFBL.text = "${bean.width} * ${bean.height}"
+                        }
                     }
                 }
             }

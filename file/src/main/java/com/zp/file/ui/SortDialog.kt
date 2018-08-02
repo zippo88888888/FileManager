@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.RadioGroup
 import com.zp.file.R
 import com.zp.file.content.getDisplay
+import com.zp.file.content.setNeedWH
 import kotlinx.android.synthetic.main.dialog_sort_layout.*
 
 class SortDialog : DialogFragment(), RadioGroup.OnCheckedChangeListener {
@@ -78,7 +79,6 @@ class SortDialog : DialogFragment(), RadioGroup.OnCheckedChangeListener {
 
     override fun onStart() {
         super.onStart()
-        val width = context.getDisplay()[0] * 0.88f
-        dialog.window.setLayout(width.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+        setNeedWH()
     }
 }

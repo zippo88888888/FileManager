@@ -7,6 +7,16 @@ import com.zp.file.listener.JumpByTypeListener
 
 class MyJumpListener : JumpByTypeListener() {
 
+    override fun jumpOther(filePath: String, view: View, context: Context) {
+        if (filePath.lastIndexOf(".") > 0) {
+            context.toast("暂不支持【${filePath.run {
+                substring(lastIndexOf(".") + 1, length)
+            }}】类型的文件预览")
+        } else {
+            super.jumpOther(filePath, view, context)
+        }
+    }
+
     /**
      * 自定义跳转
      */

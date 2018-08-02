@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import com.zp.file.R
 import com.zp.file.content.getDisplay
+import com.zp.file.content.setNeedWH
 import com.zp.file.util.FileManageUtil
 import kotlinx.android.synthetic.main.dialog_audio_play_layout.*
 import java.lang.ref.WeakReference
@@ -50,8 +51,7 @@ class AudioPlayDialog : DialogFragment(), SeekBar.OnSeekBarChangeListener, Runna
 
     override fun onStart() {
         super.onStart()
-        val w = context.getDisplay()[0] * 0.9f
-        dialog.window.setLayout(w.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+        setNeedWH()
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -145,6 +145,7 @@ class AudioPlayDialog : DialogFragment(), SeekBar.OnSeekBarChangeListener, Runna
     override fun onStartTrackingTouch(seekBar: SeekBar?) = Unit
     override fun onStopTrackingTouch(seekBar: SeekBar?) = Unit
 
+    // 提前释放资源
     override fun onDismiss(dialog: DialogInterface?) {
         super.onDismiss(dialog)
         // 释放资源

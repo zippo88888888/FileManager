@@ -6,7 +6,7 @@ import android.widget.ImageView
 import com.zp.file.R
 import com.zp.file.common.FileManageHelp
 
-class PptType : FileType {
+open class PptType : FileType {
 
     override fun openFile(filePath: String, view: View, context: Context) {
         FileManageHelp.getInstance().getJumpListener()?.jumpPpt(filePath, view, context)

@@ -9,7 +9,7 @@ import android.view.View
 import com.zp.file.common.FileManageHelp
 import java.io.File
 
-class TxtType : FileType {
+open class TxtType : FileType {
 
     /**
      * 调用系统文本打开

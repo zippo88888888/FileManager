@@ -9,9 +9,12 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/file_manage_bar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/file_manager_tool_bar_color"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        app:title="文件管理"
+        app:titleTextAppearance="@style/ToolbarTitleTextStyle"
+        app:popupTheme="@style/ToolbarPopupTheme"
+        app:theme="@style/ToolbarTheme" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/file_manage_path_recyclerView"

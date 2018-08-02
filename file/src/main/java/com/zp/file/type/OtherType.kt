@@ -12,7 +12,7 @@ import com.zp.file.common.FileManageHelp
  * description:
  * version: 1.0
  */
-class OtherType : FileType {
+open class OtherType : FileType {
 
     override fun openFile(filePath: String, view: View, context: Context) {
         FileManageHelp.getInstance().getJumpListener()?.jumpOther(filePath, view, context)

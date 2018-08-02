@@ -8,11 +8,13 @@ import android.graphics.Point
 import android.os.Bundle
 import android.os.Environment
 import android.os.Parcelable
+import android.support.v4.app.DialogFragment
 import android.support.v4.content.ContextCompat
 import android.support.v4.util.ArrayMap
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import com.zp.file.common.FileManageHelp
@@ -138,9 +140,16 @@ fun Activity.setStatusBarTransparent() {
 
 fun Context.getColorById(colorID: Int) = ContextCompat.getColor(this, colorID)
 fun Context.getStringById(stringID: Int) = resources.getString(stringID)
+/** 为DialogFragment设置需要的宽高 */
+fun DialogFragment.setNeedWH() {
+    val width = context.getDisplay()[0] * 0.88f
+    dialog.window.setLayout(width.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+}
 
 fun log(msg: String) {
     if (FileManageHelp.getInstance().isShowLog)
         Log.e("file_manager", msg)
 }
+
+
 

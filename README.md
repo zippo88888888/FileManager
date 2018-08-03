@@ -1,5 +1,5 @@
 采用Kotlin编码(100%兼容Java)， SwipeMenuView 该文件使用方式请--->>><a href="https://github.com/jdsjlzx/LRecyclerView">戳这里</a><<<---<br>
-详情请<a href="https://blog.csdn.net/qq_28322987/article/details/81384886">戳这里</a>
+<br>详情请<a href="https://blog.csdn.net/qq_28322987/article/details/81384886">戳这里</a><br>
 <br>
 支持操作音频，视频，图片，txt，zip，word，excel，ppt，pdf等文件<br> 
 支持查看指定文件类型<br> 

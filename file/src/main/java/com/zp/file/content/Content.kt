@@ -17,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
+import com.zp.file.common.FileManageDialog
 import com.zp.file.common.FileManageHelp
 import java.io.Serializable
 
@@ -141,7 +142,7 @@ fun Activity.setStatusBarTransparent() {
 fun Context.getColorById(colorID: Int) = ContextCompat.getColor(this, colorID)
 fun Context.getStringById(stringID: Int) = resources.getString(stringID)
 /** 为DialogFragment设置需要的宽高 */
-fun DialogFragment.setNeedWH() {
+fun FileManageDialog.setNeedWH() {
     val width = context.getDisplay()[0] * 0.88f
     dialog.window.setLayout(width.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
 }

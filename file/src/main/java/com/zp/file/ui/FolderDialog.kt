@@ -2,14 +2,10 @@ package com.zp.file.ui
 
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialog
-import android.support.v4.app.DialogFragment
 import android.support.v7.widget.LinearLayoutManager
-import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.zp.file.R
+import com.zp.file.common.FileManageDialog
 import com.zp.file.content.COPY_TYPE
 import com.zp.file.content.FileBean
 import com.zp.file.content.getDisplay
@@ -21,7 +17,7 @@ import com.zp.file.util.RefreshUtil
 import kotlinx.android.synthetic.main.dialog_folder_layout.*
 import java.io.File
 
-class FolderDialog : DialogFragment() {
+class FolderDialog : FileManageDialog() {
 
     companion object {
         fun newInstance(filePath: String, type: Int) = FolderDialog().apply {
@@ -37,24 +33,14 @@ class FolderDialog : DialogFragment() {
     private var filePathAdapter: FilePathAdapter? = null
     private var backList: ArrayList<String> = ArrayList()
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?) =
-            inflater?.inflate(R.layout.dialog_folder_layout, container, false)
+    override fun getContentView() = R.layout.dialog_folder_layout
 
-    override fun onCreateDialog(savedInstanceState: Bundle?) = BottomSheetDialog(context)
+    override fun createDialog(savedInstanceState: Bundle?) = BottomSheetDialog(context)
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        dialog.setOnKeyListener { _, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN)
-                onBackPressed()
-            else false
-        }
+    override fun init(savedInstanceState: Bundle?) {
         folderAdapter = FolderAdapter(context)
         filePathAdapter = FilePathAdapter(context)
-        folderAdapter?.setItemClickListener { bean, _ ->
-            if (!bean.isFile) {
-                openFile(bean)
-            }
-        }
+        folderAdapter?.setItemClickListener { bean, _ -> if (!bean.isFile) openFile(bean) }
         initRecyclerView()
         RefreshUtil.setRecyclerViewLine(dialog_folder_recyclerView, RecycleViewDivider.HORIZONTAL, true)
         FileManageUtil.getInstance().getList(null, { list -> folderAdapter?.setData(list) }, true)
@@ -96,7 +82,7 @@ class FolderDialog : DialogFragment() {
         }
     }
 
-    private fun onBackPressed() : Boolean {
+    override fun onBackPressed() : Boolean {
         val path = getThisFilePath()
         if (path != FileManageUtil.getInstance().filePath && path != null) {
             val parentPath = File(path).parent
@@ -108,7 +94,7 @@ class FolderDialog : DialogFragment() {
             }, true)
             return true
         }
-        return false
+        return super.onBackPressed()
     }
 
     private fun getThisFilePath() = if (backList.isEmpty()) null else backList[backList.size - 1]

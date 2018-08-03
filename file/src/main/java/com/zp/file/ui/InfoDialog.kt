@@ -1,28 +1,23 @@
 package com.zp.file.ui
 
-import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.DialogInterface
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.support.v4.app.DialogFragment
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.zp.file.R
+import com.zp.file.common.FileManageDialog
 import com.zp.file.content.FileBean
 import com.zp.file.content.FileInfoBean
-import com.zp.file.content.getDisplay
 import com.zp.file.content.setNeedWH
 import com.zp.file.type.*
 import com.zp.file.util.FileManageUtil
 import kotlinx.android.synthetic.main.dialog_info_layout.*
 import java.lang.ref.WeakReference
 
-class InfoDialog : DialogFragment(), Runnable {
+class InfoDialog : FileManageDialog(), Runnable {
 
     companion object {
         fun newInstance(bean: FileBean) = InfoDialog().apply {
@@ -35,16 +30,13 @@ class InfoDialog : DialogFragment(), Runnable {
     private var filePath = ""
     private var fileType: FileType? = null
 
+    override fun getContentView() = R.layout.dialog_info_layout
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?) =
-            inflater?.inflate(R.layout.dialog_info_layout, container, false)
-
-    override fun onCreateDialog(savedInstanceState: Bundle?) = Dialog(context, R.style.Common_Dialog).apply {
+    override fun createDialog(savedInstanceState: Bundle?) = Dialog(context, R.style.Common_Dialog).apply {
         window.setGravity(Gravity.CENTER)
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun init(savedInstanceState: Bundle?) {
         val bean = arguments.getSerializable("fileBean") as FileBean
         filePath = bean.filePath
         fileType = FileTypeManage.getInstance().getFileType(bean.filePath)

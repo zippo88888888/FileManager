@@ -14,13 +14,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import com.zp.file.R
+import com.zp.file.common.FileManageDialog
 import com.zp.file.content.getDisplay
 import com.zp.file.content.setNeedWH
 import com.zp.file.util.FileManageUtil
 import kotlinx.android.synthetic.main.dialog_audio_play_layout.*
 import java.lang.ref.WeakReference
 
-class AudioPlayDialog : DialogFragment(), SeekBar.OnSeekBarChangeListener, Runnable {
+class AudioPlayDialog : FileManageDialog(), SeekBar.OnSeekBarChangeListener, Runnable {
 
     companion object {
         fun getInstance(filePath: String) = AudioPlayDialog().apply {
@@ -42,19 +43,13 @@ class AudioPlayDialog : DialogFragment(), SeekBar.OnSeekBarChangeListener, Runna
     private var falgTime: Long = 0
     private var pauseTime: Long = 0
 
-    override fun onCreateDialog(savedInstanceState: Bundle?) = Dialog(context, R.style.Common_Dialog).apply {
+    override fun getContentView() = R.layout.dialog_audio_play_layout
+
+    override fun createDialog(savedInstanceState: Bundle?) = Dialog(context, R.style.Common_Dialog).apply {
         window.setGravity(Gravity.CENTER)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?) =
-            inflater?.inflate(R.layout.dialog_audio_play_layout, container, false)
-
-    override fun onStart() {
-        super.onStart()
-        setNeedWH()
-    }
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun init(savedInstanceState: Bundle?) {
         audioHandler = AudioHandler(this)
         initPlayer()
         dialog_audio_play.setOnClickListener { // 播放
@@ -84,6 +79,11 @@ class AudioPlayDialog : DialogFragment(), SeekBar.OnSeekBarChangeListener, Runna
         dialog_audio_name.text = arguments.getString("filePath").let {
             it.substring(it.lastIndexOf("/") + 1, it.length)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setNeedWH()
     }
 
     private fun initPlayer() {

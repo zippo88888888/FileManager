@@ -9,11 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
 import com.zp.file.R
+import com.zp.file.common.FileManageDialog
 import com.zp.file.content.getDisplay
 import com.zp.file.content.setNeedWH
 import kotlinx.android.synthetic.main.dialog_sort_layout.*
 
-class SortDialog : DialogFragment(), RadioGroup.OnCheckedChangeListener {
+class SortDialog : FileManageDialog(), RadioGroup.OnCheckedChangeListener {
 
     companion object {
         fun newInstance(sortCheckedID: Int, sequenceCheckedId: Int) = SortDialog().apply {
@@ -32,14 +33,13 @@ class SortDialog : DialogFragment(), RadioGroup.OnCheckedChangeListener {
         this.checkedChangedListener = checkedChangedListener
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?) =
-        inflater?.inflate(R.layout.dialog_sort_layout, container, false)
+    override fun getContentView() = R.layout.dialog_sort_layout
 
-    override fun onCreateDialog(savedInstanceState: Bundle?) = Dialog(context, R.style.Common_Dialog).apply {
+    override fun createDialog(savedInstanceState: Bundle?) = Dialog(context, R.style.Common_Dialog).apply {
         window.setGravity(Gravity.CENTER)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun init(savedInstanceState: Bundle?) {
         sortCheckedID = arguments.getInt("sortCheckedID", R.id.sort_by_default)
         sequenceCheckedId = arguments.getInt("sequenceCheckedId", R.id.sequence_asc)
         check()
@@ -63,6 +63,9 @@ class SortDialog : DialogFragment(), RadioGroup.OnCheckedChangeListener {
             dismiss()
         }
     }
+
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?) =
+        inflater?.inflate(R.layout.dialog_sort_layout, container, false)
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         if (group?.id == R.id.sortGroup) { // 方式

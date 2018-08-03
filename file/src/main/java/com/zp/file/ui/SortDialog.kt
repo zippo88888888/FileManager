@@ -64,9 +64,6 @@ class SortDialog : FileManageDialog(), RadioGroup.OnCheckedChangeListener {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?) =
-        inflater?.inflate(R.layout.dialog_sort_layout, container, false)
-
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         if (group?.id == R.id.sortGroup) { // 方式
             sortCheckedID = checkedId

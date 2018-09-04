@@ -61,10 +61,8 @@ class InfoDialog : FileManageDialog(), Runnable {
                 dialog_info_moreBox.visibility = View.VISIBLE
                 dialog_info_fileDurationLayout.visibility = View.GONE
                 dialog_info_fileOther.text = "无"
-                var map = BitmapFactory.decodeFile(filePath)
-                dialog_info_fileFBL.text = "${map.width} * ${map.height}"
-                map.recycle()
-                map = null
+                val wh = FileManageUtil.getInstance().getImageWH(filePath)
+                dialog_info_fileFBL.text = "${wh[0]} * ${wh[1]}"
             }
             is AudioType -> {
                 dialog_info_moreBox.visibility = View.VISIBLE

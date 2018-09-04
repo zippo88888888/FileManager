@@ -1,5 +1,6 @@
 package com.zp.file.util
 
+import android.graphics.BitmapFactory
 import android.media.MediaPlayer
 import com.zp.file.common.FileManageHelp
 import com.zp.file.content.FileBean
@@ -179,7 +180,7 @@ class FileManageUtil {
         } finally {
             outputStream?.close()
             try {
-                if (zipInputStream != null) zipInputStream.close()
+               zipInputStream?.close()
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -210,6 +211,17 @@ class FileManageUtil {
             mediaPlayer?.release()
             return FileInfoBean(secToTime(duration / 1000), width, height)
         }
+    }
+
+    /**
+     * 根据路径获取图片的宽、高信息
+     */
+    fun getImageWH(imagePath: String) : Array<Int> {
+        val options = BitmapFactory.Options()
+        options.inJustDecodeBounds = true
+        BitmapFactory.decodeFile(imagePath, options)
+        log("width---${options.outWidth} height---${options.outHeight}")
+        return arrayOf(options.outWidth, options.outHeight)
     }
 
 }

@@ -17,7 +17,7 @@ class MyFileTypeListener : FileTypeListener() {
             substring(lastIndexOf(".") + 1, length)
         }
         return when (typeStr) {
-            CUSTOM -> CustomType()
+            CUSTOM1, CUSTOM2 -> CustomType()
             else -> super.getFileType(filePath)
         }
     }

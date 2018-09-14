@@ -7,7 +7,8 @@ import com.zp.file.common.FileManageHelp
 import com.zp.file.type.FileType
 import com.zp.filemanage.R
 
-const val CUSTOM = "ttf"
+const val CUSTOM1 = "ttf"
+const val CUSTOM2 = "apk"
 
 /**
  * 自定义文件类型
@@ -29,7 +30,7 @@ class CustomType : FileType {
      * @param pic      文件展示的图片
      */
     override fun loadingFile(filePath: String, pic: ImageView) {
-        pic.setImageResource(R.mipmap.ic_launcher)
+        pic.setImageResource(R.mipmap.ic_launcher_round)
     }
 
 }

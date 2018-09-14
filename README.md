@@ -12,7 +12,7 @@
 1) 在Application中，请根据需要自行添加，初始均为为默认值<br><br>
 FileManageHelp.getInstance()<br>
                 .setFileTypeListener(FileTypeListener()) // 获取文件类型<br>
-                .setImgeLoad(FileImageListener()) // 图片加载方式<br>
+                .setImgeLoad(MyFileImageListener()) // 图片加载方式（自己实现）<br>
                 .setJumpListener(JumpByTypeListener()) // 跳转方式 <br>
                 .setFileInfoListener(FileInfoListener()) // 文件详情 <br>
                 .setMaxLength(9, "最大选取数量：9") <br>

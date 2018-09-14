@@ -5,16 +5,14 @@
     android:orientation="vertical">
 
     <TextView
+        style="@style/Base.DialogWindowTitle.AppCompat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="15dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="15dp"
-        android:text="排序方式"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:text="排序方式" />
 
     <RadioGroup
         android:id="@+id/sortGroup"
@@ -55,8 +53,8 @@
         android:id="@+id/sequenceLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="match_parent"
@@ -97,36 +95,25 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:paddingRight="20dp"
+        android:layout_marginBottom="@dimen/md_bottom_margin">
 
-        <TextView
+        <Button
             android:id="@+id/dialog_sort_down"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:background="?selectableItemBackground"
-            android:paddingBottom="5dp"
-            android:paddingLeft="@dimen/default_divider_padding"
-            android:paddingRight="@dimen/default_divider_padding"
-            android:paddingTop="5dp"
             android:text="确定"
             android:textColor="@color/file_manager_tool_bar_color" />
 
         <TextView
             android:id="@+id/dialog_sort_cancel"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_toStartOf="@+id/dialog_sort_down"
-            android:background="?selectableItemBackground"
-            android:paddingBottom="5dp"
-            android:paddingLeft="@dimen/default_divider_padding"
-            android:paddingRight="@dimen/default_divider_padding"
-            android:paddingTop="5dp"
             android:text="取消"
             android:textColor="@color/file_manager_tool_bar_color" />
 

@@ -6,16 +6,14 @@
     android:orientation="vertical">
 
     <TextView
+        style="@style/Base.DialogWindowTitle.AppCompat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="15dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="15dp"
-        android:text="文件详情"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:text="文件详情" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -134,15 +132,15 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
-        android:visibility="gone"
-        android:text="显示更多" />
+        android:text="显示更多"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/dialog_info_moreLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
 
         <LinearLayout
@@ -163,8 +161,8 @@
                 android:id="@+id/dialog_info_fileDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="获取中"
+                android:textColor="@color/black"
                 tools:text="aaa.mp3" />
 
         </LinearLayout>
@@ -187,8 +185,8 @@
                 android:id="@+id/dialog_info_fileFBL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="获取中"
+                android:textColor="@color/black"
                 tools:text="aaa.mp3" />
 
         </LinearLayout>
@@ -220,39 +218,28 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginBottom="@dimen/md_bottom_margin"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
-        <TextView
+        <Button
             android:id="@+id/dialog_info_down"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:background="?selectableItemBackground"
-            android:paddingBottom="5dp"
-            android:paddingLeft="@dimen/default_divider_padding"
-            android:paddingRight="@dimen/default_divider_padding"
-            android:paddingTop="5dp"
             android:text="确定"
             android:textColor="@color/file_manager_tool_bar_color" />
 
-        <TextView
+        <Button
             android:id="@+id/dialog_info_copy"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_toStartOf="@+id/dialog_info_down"
-            android:background="?selectableItemBackground"
-            android:paddingBottom="5dp"
-            android:paddingLeft="@dimen/default_divider_padding"
-            android:paddingRight="@dimen/default_divider_padding"
-            android:paddingTop="5dp"
             android:text="复制所有信息"
-            android:visibility="gone"
-            android:textColor="@color/file_manager_tool_bar_color" />
+            android:textColor="@color/file_manager_tool_bar_color"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

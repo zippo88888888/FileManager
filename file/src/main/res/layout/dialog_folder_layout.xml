@@ -14,38 +14,28 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
-        <TextView
+        <Button
             android:id="@+id/dialog_folder_down"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:background="?selectableItemBackground"
-            android:paddingBottom="5dp"
-            android:paddingLeft="@dimen/default_divider_padding"
-            android:paddingRight="@dimen/default_divider_padding"
-            android:paddingTop="5dp"
+            android:layout_toStartOf="@+id/dialog_folder_cancel"
             android:text="确定"
             android:textColor="@color/file_manager_tool_bar_color" />
 
-        <TextView
+        <Button
             android:id="@+id/dialog_folder_cancel"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_toStartOf="@+id/dialog_folder_down"
-            android:background="?selectableItemBackground"
-            android:paddingBottom="5dp"
-            android:paddingLeft="@dimen/default_divider_padding"
-            android:paddingRight="@dimen/default_divider_padding"
-            android:paddingTop="5dp"
             android:text="取消"
-            android:textColor="@color/file_manager_tool_bar_color" />
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/gray" />
 
     </RelativeLayout>
 

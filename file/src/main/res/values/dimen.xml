@@ -6,4 +6,6 @@
     <!-- RecyclerView自定义分隔线高度 -->
     <dimen name="diy_divider_height">15dp</dimen>
 
+    <dimen name="md_bottom_margin">5dp</dimen>
+
 </resources>

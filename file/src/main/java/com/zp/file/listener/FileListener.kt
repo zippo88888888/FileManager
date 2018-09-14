@@ -14,6 +14,7 @@ import java.io.File
 import android.support.v7.app.AlertDialog
 import com.zp.file.content.*
 import com.zp.file.ui.*
+import com.zp.file.util.FileManageUtil
 import com.zp.file.util.FileOpenUtil
 
 interface TelActivityListener {
@@ -140,6 +141,18 @@ open class JumpByTypeListener {
     }
 }
 
+/**
+ * 文件解压
+ */
+open class FileZipListener {
+
+    /**
+     * @return Boolean true --->>> 成功
+     */
+    open fun zipFile(filePath: String, outZipPath: String, context: Context): Boolean {
+        return FileManageUtil.getInstance().extractFile(filePath, outZipPath)
+    }
+}
 
 /**
  * 文件详情

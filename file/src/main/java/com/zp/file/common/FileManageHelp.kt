@@ -55,6 +55,15 @@ class FileManageHelp : FileManage {
     }
 
     /**
+     * 设置文件解压监听
+     */
+    private var fileZipListener: FileZipListener? = FileZipListener()
+    fun setFileZipListener(fileZipListener: FileZipListener): FileManageHelp {
+        this.fileZipListener = fileZipListener
+        return this
+    }
+
+    /**
      * 文件详情
      */
     private var fileInfoListener: FileInfoListener? = FileInfoListener()
@@ -222,7 +231,7 @@ class FileManageHelp : FileManage {
             val isSuccess = when (type) {
                 COPY_TYPE -> FileManageUtil.getInstance().copyFile(filePath, outPath)
                 CUT_TYPE -> FileManageUtil.getInstance().cutFile(filePath, outPath)
-                else -> FileManageUtil.getInstance().extractFile(filePath, outPath)
+                else -> fileZipListener?.zipFile(filePath, outPath, context) ?: false
             }
             activity.runOnUiThread ({
                 dialog.dismiss()

@@ -4,15 +4,13 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
-import com.bumptech.glide.Glide
 import com.zp.file.R
-import com.zp.file.type.*
-import java.io.File
-import android.support.v7.app.AlertDialog
 import com.zp.file.content.*
+import com.zp.file.type.*
 import com.zp.file.ui.*
 import com.zp.file.util.FileManageUtil
 import com.zp.file.util.FileOpenUtil
@@ -50,15 +48,7 @@ open class FileTypeListener {
  * 图片加载
  */
 open class FileImageListener {
-    open fun loadImage(imageView: ImageView, path: String) {
-        imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-        Glide.with(imageView.context)
-                .load(File(path))
-                .placeholder(R.drawable.file_other)
-                .error(R.drawable.file_other)
-                .dontAnimate()
-                .into(imageView)
-    }
+    open fun loadImage(imageView: ImageView, path: String) = Unit
 }
 
 

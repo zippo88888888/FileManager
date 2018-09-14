@@ -14,7 +14,7 @@ class App : Application() {
         super.onCreate()
         FileManageHelp.getInstance()
                 .setFileTypeListener(MyFileTypeListener())
-                .setImgeLoad(FileImageListener())
+                .setImgeLoad(MyFileImageListener())
                 .setJumpListener(MyJumpListener())
                 .setFileZipListener(FileZipListener())
                 .setFileInfoListener(FileInfoListener())

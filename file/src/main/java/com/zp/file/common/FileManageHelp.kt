@@ -24,6 +24,7 @@ class FileManageHelp : FileManage {
 
     companion object {
 
+        @JvmStatic
         fun getInstance() = Builder.MANAGER
 
         /** 默认 */
@@ -98,6 +99,7 @@ class FileManageHelp : FileManage {
     private var maxLength = -1
     var maxLengthHintStr = ""
     fun getMaxLength() = maxLength
+    @JvmOverloads
     fun setMaxLength(maxLength: Int, maxLengthHintStr: String = "最多可选取${maxLength}个文件"): FileManageHelp {
         if (maxLength <= 0) throw IllegalArgumentException("maxLength 必须大于 0")
         this.maxLength = maxLength
@@ -164,6 +166,7 @@ class FileManageHelp : FileManage {
      * 跳转至文件管理页面
      * @param path 指定的文件路径
      */
+    @JvmOverloads
     fun start(context: Context, path: String? = null) {
         context.jumpActivity(FileManageActivity::class.java,
                 if (path == null) null else ArrayMap<String,Any>().apply { put("filePath", path) })
@@ -227,17 +230,17 @@ class FileManageHelp : FileManage {
             show()
             this
         }
-        Thread({
+        Thread {
             val isSuccess = when (type) {
                 COPY_TYPE -> FileManageUtil.getInstance().copyFile(filePath, outPath)
                 CUT_TYPE -> FileManageUtil.getInstance().cutFile(filePath, outPath)
                 else -> fileZipListener?.zipFile(filePath, outPath, context) ?: false
             }
-            activity.runOnUiThread ({
+            activity.runOnUiThread {
                 dialog.dismiss()
                 activity.toast(if (isSuccess) "${msg}成功" else "${msg}失败")
-            })
-        }).start()
+            }
+        }.start()
     }
 
 }

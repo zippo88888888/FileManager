@@ -89,7 +89,7 @@ open class JumpByTypeListener {
     open fun jumpZip(filePath: String, view: View, context: Context) {
         AlertDialog.Builder(context).apply {
             setTitle("请选择")
-            setItems(arrayOf("打开", "解压"), { dialog, which ->
+            setItems(arrayOf("打开", "解压")) { dialog, which ->
                 dialog.dismiss()
                 if (which == 0) {
                     FileOpenUtil.openZIP(filePath, view, context)
@@ -103,8 +103,8 @@ open class JumpByTypeListener {
                         }
                     }
                 }
-            })
-            setPositiveButton("取消", { dialog, _ -> dialog.dismiss() })
+            }
+            setPositiveButton("取消") { dialog, _ -> dialog.dismiss() }
             show()
         }
     }

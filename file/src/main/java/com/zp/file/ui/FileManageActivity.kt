@@ -50,7 +50,7 @@ class FileManageActivity : FileActivity() {
         file_manage_bar.apply {
             inflateMenu(R.menu.file_menu)
             setOnMenuItemClickListener { menu -> menuItemClick(menu) }
-            setNavigationIcon(R.drawable.file_back)
+            setNavigationIcon(R.drawable.svg_file_back)
             title = "文件管理"
             setNavigationOnClickListener { onBackPressed() }
         }

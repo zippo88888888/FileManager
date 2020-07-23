@@ -3,6 +3,8 @@
 <br>**↓↓↓ 鸣谢↓↓↓**<br>
 [SwipeMenuView](https://github.com/jdsjlzx/LRecyclerView)
 
+
+
 ## 特点
 
 1. 支持操作音频，视频，图片，txt，zip，word，excel，ppt，pdf等文件
@@ -11,10 +13,9 @@
 4. 支持多选，最大数量限制
 5. 支持实时排序、指定文件路径访问
 
-## 即将支持的功能
-1. 打包成库文件
-2. 支持单一文件显示（类似系统文件管理分类的那种）
-3. 对QQ、微信App文件选择友好支持
+# 本库即将停止维护
+# 最新版本请查看 [ZFileManager](https://github.com/zippo88888888/ZFileManager)
+
 
 ## 使用
 

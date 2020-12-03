@@ -13,7 +13,7 @@
 4. 支持多选，最大数量限制
 5. 支持实时排序、指定文件路径访问
 
-# 本库即将停止维护
+# 本库停止维护
 # 最新版本请查看 [ZFileManager](https://github.com/zippo88888888/ZFileManager)
 
 
